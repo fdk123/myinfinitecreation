@@ -1,0 +1,16 @@
+.gradle/
+build/
+bin/
+run/
+out/
+.classpath
+.project
+.settings/
+.idea/
+.vscode/
+*.iml
+*.log
+hs_err_pid*
+replay_pid*
+mcmodsrepo/
+src/generated/resources/

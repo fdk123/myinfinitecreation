@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "fdk123.myinfinitecreation.mixin",
+  "plugin": "fdk123.myinfinitecreation.mixin.MicMixinPlugin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "myinfinitecreation.refmap.json",
+  "mixins": [
+    "CreateRecipeGridHandlerMixin",
+    "ResultSlotMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

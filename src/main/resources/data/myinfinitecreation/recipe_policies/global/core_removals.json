@@ -1,0 +1,47 @@
+{
+  "replace": false,
+  "rules": [
+    {
+      "name": "Problematic - IE/IP arc furnace steel by output tag",
+      "type": "immersiveengineering:arc_furnace",
+      "output_tag": "forge:ingots/steel"
+    },
+    {
+      "name": "CraftTweaker MVP - vanilla wooden tools",
+      "output": [
+        "minecraft:wooden_pickaxe",
+        "minecraft:wooden_hoe",
+        "minecraft:wooden_axe",
+        "minecraft:wooden_shovel",
+        "minecraft:wooden_sword"
+      ]
+    },
+    {
+      "name": "CraftTweaker MVP - vanilla steel smelting outputs",
+      "type": [
+        "minecraft:smelting",
+        "minecraft:blasting"
+      ],
+      "output": [
+        "immersiveengineering:ingot_steel",
+        "immersiveengineering:nugget_steel",
+        "immersiveengineering:storage_steel"
+      ]
+    },
+    {
+      "name": "CraftTweaker MVP - selected progression outputs",
+      "output": [
+        "immersiveengineering:cokebrick",
+        "immersiveengineering:blastbrick",
+        "immersiveengineering:component_electronic",
+        "immersiveengineering:component_electronic_adv",
+        "minecolonies:supplycampdeployer",
+        "minecolonies:supplychestdeployer",
+        "naturescompass:naturescompass",
+        "explorerscompass:explorerscompass",
+        "ae2:inscriber",
+        "wirelessredstone:circuit"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "rules": [
+    {
+      "name": "Example - Iron pickaxe requires MineColonies Iron Tooling",
+      "required_research": "myinfinitecreation:technology/iron_tooling",
+      "type": "minecraft:crafting",
+      "output": "minecraft:iron_pickaxe"
+    }
+  ]
+}

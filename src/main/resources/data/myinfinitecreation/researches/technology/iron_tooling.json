@@ -1,0 +1,20 @@
+{
+  "branch": "minecolonies:technology",
+  "costs": [
+    {
+      "type": "minecolonies:item_simple",
+      "item": "minecraft:paper",
+      "quantity": 8
+    }
+  ],
+  "effects": [
+    {
+      "id": "minecolonies:effects/blockplacespeedmultiplier",
+      "level": 1
+    }
+  ],
+  "icon": "minecraft:iron_pickaxe",
+  "researchLevel": 1,
+  "sortOrder": 100,
+  "subtitle": "com.myinfinitecreation.research.technology.iron_tooling.subtitle"
+}

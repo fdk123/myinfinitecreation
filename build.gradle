@@ -1,0 +1,178 @@
+buildscript {
+    repositories {
+        maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.spongepowered:mixingradle:0.7.38'
+    }
+}
+
+plugins {
+    id 'eclipse'
+    id 'idea'
+    id 'maven-publish'
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+}
+
+apply plugin: 'org.spongepowered.mixin'
+
+version = "${minecraft_version}-${mod_version}"
+group = mod_group_id
+
+base {
+    archivesName = mod_id
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+minecraft {
+    mappings channel: mapping_channel, version: mapping_version
+    copyIdeResources = true
+
+    runs {
+        configureEach {
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+        }
+
+        client {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+
+            mods {
+                myinfinitecreation {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        server {
+            workingDirectory project.file('run/server')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+
+            mods {
+                myinfinitecreation {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        data {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+            args '--mod', mod_id, '--all',
+                    '--output', file('src/generated/resources/'),
+                    '--existing', file('src/main/resources/')
+
+            mods {
+                myinfinitecreation {
+                    source sourceSets.main
+                }
+            }
+        }
+    }
+}
+
+sourceSets.main.resources {
+    srcDir 'src/generated/resources'
+}
+
+mixin {
+    add sourceSets.main, "${mod_id}.refmap.json"
+    config "${mod_id}.mixins.json"
+}
+
+repositories {
+    flatDir {
+        dirs '../references/mods'
+    }
+}
+
+dependencies {
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+
+    compileOnly fg.deobf("local:jei-1.20.1-forge:15.20.0.130")
+    compileOnly fg.deobf("local:create-1.20.1:6.0.8")
+    runtimeOnly fg.deobf("local:jei-1.20.1-forge:15.20.0.130")
+    runtimeOnly fg.deobf("local:almostunified-forge-1.20.1:0.11.0")
+    runtimeOnly fg.deobf("local:unifyeverything-1.20.1:1.0.2.9")
+    runtimeOnly fg.deobf("local:GameStages-Forge-1.20.1:15.0.2")
+    runtimeOnly fg.deobf("local:teamstages-1.20.1:1.2.0")
+    runtimeOnly fg.deobf("local:architectury:9.2.14-forge")
+    runtimeOnly fg.deobf("local:Bookshelf-Forge-1.20.1:20.2.15")
+    runtimeOnly fg.deobf("local:ftb-library-forge:2001.2.12")
+    runtimeOnly fg.deobf("local:ftb-teams-forge:2001.3.2")
+    runtimeOnly fg.deobf("local:create-1.20.1:6.0.8")
+    runtimeOnly fg.deobf("local:blockui-1.20.1:1.0.193")
+    runtimeOnly fg.deobf("local:structurize-1.20.1:1.0.816")
+    runtimeOnly fg.deobf("local:domum_ornamentum-1.20.1:1.0.296-universal")
+    runtimeOnly fg.deobf("local:multipiston-1.20:1.2.43-RELEASE")
+    runtimeOnly fg.deobf("local:minecolonies-1.20.1:1.1.1231")
+    runtimeOnly fg.deobf("local:ImmersiveEngineering-1.20.1-10.2.0:183")
+    runtimeOnly fg.deobf("local:ImmersivePetroleum-1.20.1-4.3.1:36")
+}
+
+tasks.named('processResources', ProcessResources).configure {
+    var replaceProperties = [
+            minecraft_version      : minecraft_version,
+            minecraft_version_range: minecraft_version_range,
+            forge_version          : forge_version,
+            forge_version_range    : forge_version_range,
+            loader_version_range   : loader_version_range,
+            mod_id                 : mod_id,
+            mod_name               : mod_name,
+            mod_license            : mod_license,
+            mod_version            : mod_version,
+            mod_authors            : mod_authors,
+            mod_description        : mod_description
+    ]
+    inputs.properties replaceProperties
+
+    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
+        expand replaceProperties + [project: project]
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release = 17
+}
+
+jar {
+    manifest {
+        attributes([
+                'Specification-Title'     : mod_name,
+                'Specification-Vendor'    : mod_authors,
+                'Specification-Version'   : minecraft_version,
+                'Implementation-Title'    : mod_id,
+                'Implementation-Version'  : mod_version,
+                'Implementation-Vendor'   : mod_authors,
+                'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+                'MixinConfigs'            : 'myinfinitecreation.mixins.json'
+        ])
+    }
+}
+
+publishing {
+    publications {
+        register('mavenJava', MavenPublication) {
+            artifact jar
+        }
+    }
+    repositories {
+        maven {
+            url "file://${project.projectDir}/mcmodsrepo"
+        }
+    }
+}
