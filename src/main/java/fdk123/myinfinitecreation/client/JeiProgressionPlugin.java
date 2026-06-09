@@ -1,6 +1,7 @@
 package fdk123.myinfinitecreation.client;
 
 import fdk123.myinfinitecreation.MyInfiniteCreation;
+import fdk123.myinfinitecreation.progression.ModGateRule;
 import fdk123.myinfinitecreation.progression.ProgressionGateRule;
 import fdk123.myinfinitecreation.progression.StageAccess;
 import mezz.jei.api.IModPlugin;
@@ -128,6 +129,11 @@ public class JeiProgressionPlugin implements IModPlugin {
                 addOutputStacks(rule, stacks);
             }
         }
+        for (ModGateRule rule : lockedModRules()) {
+            if (rule.hideInJei) {
+                addModGateStacks(rule, stacks);
+            }
+        }
         return stacks;
     }
 
@@ -138,10 +144,12 @@ public class JeiProgressionPlugin implements IModPlugin {
         }
 
         List<ProgressionGateRule> lockedRules = lockedRules();
+        List<ModGateRule> lockedModRules = lockedModRules();
         List<CraftingRecipe> recipes = new ArrayList<>();
         for (CraftingRecipe recipe : minecraft.level.getRecipeManager().getAllRecipesFor(net.minecraft.world.item.crafting.RecipeType.CRAFTING)) {
             ItemStack result = recipe.getResultItem(minecraft.level.registryAccess());
-            if (lockedRules.stream().anyMatch(rule -> matchesOutput(rule, result) || hasMatchingIngredient(recipe, rule))) {
+            if (lockedRules.stream().anyMatch(rule -> matchesOutput(rule, result) || hasMatchingIngredient(recipe, rule))
+                    || lockedModRules.stream().anyMatch(rule -> rule.hideInJei && (matchesModGateItem(rule, result) || hasMatchingModGateIngredient(recipe, rule)))) {
                 recipes.add(recipe);
             }
         }
@@ -155,6 +163,7 @@ public class JeiProgressionPlugin implements IModPlugin {
         }
 
         List<ProgressionGateRule> lockedRules = lockedRules();
+        List<ModGateRule> lockedModRules = lockedModRules();
         Map<RecipeType<Object>, List<Object>> recipesByJeiType = new LinkedHashMap<>();
         addCreateAutomaticShapedRecipes(recipesByJeiType);
         addMineColoniesJobRecipes(recipesByJeiType, lockedRules);
@@ -166,7 +175,9 @@ public class JeiProgressionPlugin implements IModPlugin {
             }
 
             ItemStack result = recipe.getResultItem(minecraft.level.registryAccess());
-            if (lockedRules.stream().noneMatch(rule -> matchesOutput(rule, result))) {
+            boolean lockedByRecipeGate = lockedRules.stream().anyMatch(rule -> matchesOutput(rule, result));
+            boolean lockedByModGate = lockedModRules.stream().anyMatch(rule -> rule.hideInJei && matchesModGateItem(rule, result));
+            if (!lockedByRecipeGate && !lockedByModGate) {
                 continue;
             }
 
@@ -220,7 +231,8 @@ public class JeiProgressionPlugin implements IModPlugin {
 
     private static List<IJeiAnvilRecipe> lockedAnvilRecipes() {
         List<ProgressionGateRule> lockedRules = lockedRules();
-        if (lockedRules.isEmpty() || runtime == null) {
+        List<ModGateRule> lockedModRules = lockedModRules();
+        if (lockedRules.isEmpty() && lockedModRules.isEmpty() || runtime == null) {
             return List.of();
         }
 
@@ -228,7 +240,8 @@ public class JeiProgressionPlugin implements IModPlugin {
                 .createRecipeLookup(RecipeTypes.ANVIL)
                 .includeHidden()
                 .get()
-                .filter(recipe -> lockedRules.stream().anyMatch(rule -> matchesAnvilRecipe(recipe, rule)))
+                .filter(recipe -> lockedRules.stream().anyMatch(rule -> matchesAnvilRecipe(recipe, rule))
+                        || lockedModRules.stream().anyMatch(rule -> rule.hideInJei && matchesModGateAnvilRecipe(recipe, rule)))
                 .toList();
     }
 
@@ -241,6 +254,19 @@ public class JeiProgressionPlugin implements IModPlugin {
         for (ProgressionGateRule rule : rules) {
             boolean unlocked = isUnlocked(player, rule);
             if (!unlocked) {
+                lockedRules.add(rule);
+            }
+        }
+        return lockedRules;
+    }
+
+    private static List<ModGateRule> lockedModRules() {
+        Minecraft minecraft = Minecraft.getInstance();
+        Player player = minecraft.player;
+        List<ModGateRule> lockedRules = new ArrayList<>();
+
+        for (ModGateRule rule : ClientProgressionHooks.modGateRules()) {
+            if (!ClientProgressionHooks.isUnlocked(player, rule)) {
                 lockedRules.add(rule);
             }
         }
@@ -269,6 +295,13 @@ public class JeiProgressionPlugin implements IModPlugin {
         }
     }
 
+    private static void addModGateStacks(ModGateRule rule, List<ItemStack> stacks) {
+        BuiltInRegistries.ITEM.stream()
+                .map(Item::getDefaultInstance)
+                .filter(stack -> matchesModGateItem(rule, stack))
+                .forEach(stacks::add);
+    }
+
     private static boolean matchesOutput(ProgressionGateRule rule, ItemStack stack) {
         if (stack.isEmpty()) {
             return false;
@@ -280,6 +313,10 @@ public class JeiProgressionPlugin implements IModPlugin {
         return rule.outputTags.stream().anyMatch(tag -> stack.is(TagKey.create(BuiltInRegistries.ITEM.key(), tag)));
     }
 
+    private static boolean matchesModGateItem(ModGateRule rule, ItemStack stack) {
+        return ClientProgressionHooks.matchesItem(rule, stack);
+    }
+
     private static boolean matchesRuleRecipeType(ProgressionGateRule rule, ResourceLocation recipeType) {
         return rule.types.isEmpty() || rule.types.contains(recipeType);
     }
@@ -288,6 +325,12 @@ public class JeiProgressionPlugin implements IModPlugin {
         return recipe.getIngredients().stream()
                 .flatMap(ingredient -> Arrays.stream(ingredient.getItems()))
                 .anyMatch(stack -> matchesOutput(rule, stack));
+    }
+
+    private static boolean hasMatchingModGateIngredient(CraftingRecipe recipe, ModGateRule rule) {
+        return recipe.getIngredients().stream()
+                .flatMap(ingredient -> Arrays.stream(ingredient.getItems()))
+                .anyMatch(stack -> matchesModGateItem(rule, stack));
     }
 
     private static boolean isLockedMineColoniesRecipe(Object recipe, List<ProgressionGateRule> lockedRules) {
@@ -357,6 +400,12 @@ public class JeiProgressionPlugin implements IModPlugin {
         return recipe.getLeftInputs().stream().anyMatch(stack -> matchesOutput(rule, stack))
                 || recipe.getRightInputs().stream().anyMatch(stack -> matchesOutput(rule, stack))
                 || recipe.getOutputs().stream().anyMatch(stack -> matchesOutput(rule, stack));
+    }
+
+    private static boolean matchesModGateAnvilRecipe(IJeiAnvilRecipe recipe, ModGateRule rule) {
+        return recipe.getLeftInputs().stream().anyMatch(stack -> matchesModGateItem(rule, stack))
+                || recipe.getRightInputs().stream().anyMatch(stack -> matchesModGateItem(rule, stack))
+                || recipe.getOutputs().stream().anyMatch(stack -> matchesModGateItem(rule, stack));
     }
 
     @SuppressWarnings({"rawtypes", "unchecked"})

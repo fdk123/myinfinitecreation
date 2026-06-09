@@ -18,6 +18,18 @@ Multiple values inside one matcher are OR. Multiple matchers in one rule are AND
 
 Rules are applied after server recipes are loaded and log every removed recipe.
 
+Replacement recipes should use normal datapack recipe JSON under:
+
+`data/<namespace>/recipes/**/*.json`
+
+The safe migration pattern from CraftTweaker is:
+
+1. remove the old recipe by exact `id` in `recipe_policies`
+2. add the replacement recipe under `recipes`
+3. add a `recipe_gates` rule if that replacement should stay hidden until progression unlocks it
+
+Prefer exact recipe ids for replacements. A broad output-only removal will also remove replacement recipes that produce the same item.
+
 Progression gates are separate from hard removals. Rules live in datapack JSON under:
 
 `data/<namespace>/recipe_gates/*.json`
@@ -35,6 +47,49 @@ Current gate matchers:
 - `output_tag` / `output_tags`: result item tag
 
 If `type` is omitted, the gate applies to the output item globally. If `type` is present, the gate applies only to recipes of that type.
+
+Mod gates are broader progression restrictions for whole mods or item/block groups. Rules live under:
+
+`data/<namespace>/mod_gates/*.json`
+
+They do not delete items. Locked items can still be picked up, but they can be hidden from JEI, shown as an unknown item in tooltips, and blocked from use/place/break interactions until the required stage or MineColonies research is unlocked.
+
+Example:
+
+```json
+{
+  "replace": false,
+  "rules": [
+    {
+      "name": "Create entry",
+      "modid": "create",
+      "required_research": "myinfinitecreation:technology/create_entry",
+      "hide_in_jei": true,
+      "mask_name": true,
+      "allow_pickup": true,
+      "prevent_use": true,
+      "prevent_place": true,
+      "prevent_break_blocks": true,
+      "except_items": [
+        "create:andesite_alloy"
+      ],
+      "except_blocks": [
+        "create:andesite_casing"
+      ]
+    }
+  ]
+}
+```
+
+Current mod gate matchers:
+
+- `modid` / `modids`: item or block namespace, for example `create`
+- `item` / `items`: exact item ids
+- `item_tag` / `item_tags`: item tags
+- `block` / `blocks`: exact block ids
+- `block_tag` / `block_tags`: block tags, useful for ores
+- `except_item` / `except_items`: item exceptions
+- `except_block` / `except_blocks`: block exceptions
 
 Example:
 
@@ -89,6 +144,41 @@ Recipe gate example using that research:
   ]
 }
 ```
+
+Migrated recipe examples currently live under:
+
+`data/myinfinitecreation/recipes/crafting`
+`data/myinfinitecreation/recipes/create/mechanical_crafting`
+
+The first batch covers simple CraftTweaker `addShaped` / `addShapeless` recipes and Create mechanical crafting replacements.
+
+For CraftTweaker `.reuse()` style shaped recipes, use:
+
+`type: "myinfinitecreation:shaped_with_remainders"`
+
+This format behaves like vanilla shaped crafting, with extra `key` fields:
+
+```json
+{
+  "type": "myinfinitecreation:shaped_with_remainders",
+  "pattern": ["ABC"],
+  "key": {
+    "A": {
+      "item": "minecraft:dragon_head",
+      "reuse": true
+    },
+    "B": {
+      "item": "minecraft:beacon",
+      "remainder": "minecraft:beacon"
+    }
+  },
+  "result": {
+    "item": "minecolonies:supplycampdeployer"
+  }
+}
+```
+
+Vanilla item remainders still work too, so items like `minecraft:water_bucket` keep returning their normal bucket unless an explicit remainder overrides that slot.
 
 Recipe policies can be grouped by world progression stage:
 

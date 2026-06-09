@@ -1,0 +1,33 @@
+{
+  "type": "myinfinitecreation:shaped_with_remainders",
+  "category": "misc",
+  "pattern": [
+    "HBE",
+    "ODO",
+    "OOO"
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:beacon",
+      "reuse": true
+    },
+    "D": {
+      "item": "minecraft:dragon_breath"
+    },
+    "E": {
+      "item": "minecraft:dragon_egg",
+      "reuse": true
+    },
+    "H": {
+      "item": "minecraft:dragon_head",
+      "reuse": true
+    },
+    "O": {
+      "tag": "minecraft:boats"
+    }
+  },
+  "result": {
+    "item": "minecolonies:supplychestdeployer"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,24 @@
+{
+  "type": "create:mechanical_crafting",
+  "acceptMirrored": false,
+  "pattern": [
+    "FSF",
+    "SCS",
+    "FSF"
+  ],
+  "key": {
+    "C": {
+      "tag": "forge:sandstone"
+    },
+    "F": {
+      "tag": "forge:ingots/fiery"
+    },
+    "S": {
+      "item": "tconstruct:scorched_brick"
+    }
+  },
+  "result": {
+    "item": "immersiveengineering:cokebrick",
+    "count": 3
+  }
+}

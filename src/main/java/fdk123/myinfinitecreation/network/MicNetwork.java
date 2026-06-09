@@ -2,6 +2,7 @@ package fdk123.myinfinitecreation.network;
 
 import fdk123.myinfinitecreation.MyInfiniteCreation;
 import fdk123.myinfinitecreation.progression.MineColoniesResearchAccess;
+import fdk123.myinfinitecreation.progression.ModGateService;
 import fdk123.myinfinitecreation.progression.ProgressionGateService;
 import fdk123.myinfinitecreation.recipe.RecipeStageState;
 import net.minecraft.resources.ResourceLocation;
@@ -44,6 +45,13 @@ public class MicNetwork {
                 MineColoniesResearchSyncPacket::decode,
                 MineColoniesResearchSyncPacket::handle
         );
+        CHANNEL.registerMessage(
+                nextPacketId++,
+                ModGatesSyncPacket.class,
+                ModGatesSyncPacket::encode,
+                ModGatesSyncPacket::decode,
+                ModGatesSyncPacket::handle
+        );
     }
 
     public static void syncStage(ServerPlayer player) {
@@ -58,6 +66,10 @@ public class MicNetwork {
 
     public static void syncRecipeGates(ServerPlayer player, ProgressionGateService progressionGateService) {
         CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), new RecipeGatesSyncPacket(progressionGateService.rules()));
+    }
+
+    public static void syncModGates(ServerPlayer player, ModGateService modGateService) {
+        CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), new ModGatesSyncPacket(modGateService.rules()));
     }
 
     public static void syncMineColoniesResearch(ServerPlayer player) {

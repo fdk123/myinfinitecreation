@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "tools",
+  "pattern": [
+    "DSG",
+    "SCS",
+    "RSI"
+  ],
+  "key": {
+    "C": {
+      "item": "minecraft:compass"
+    },
+    "D": {
+      "item": "minecraft:diamond"
+    },
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "R": {
+      "item": "minecraft:copper_ingot"
+    },
+    "S": {
+      "item": "minecraft:cracked_stone_bricks"
+    }
+  },
+  "result": {
+    "item": "explorerscompass:explorerscompass"
+  }
+}

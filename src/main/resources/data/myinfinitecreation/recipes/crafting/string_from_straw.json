@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "SSS"
+  ],
+  "key": {
+    "S": {
+      "item": "farmersdelight:straw"
+    }
+  },
+  "result": {
+    "item": "minecraft:string",
+    "count": 3
+  }
+}

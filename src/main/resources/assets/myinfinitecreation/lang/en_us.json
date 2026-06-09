@@ -1,5 +1,8 @@
 {
   "modmenu.nameTranslation.myinfinitecreation": "My Infinite Creation",
+  "item.myinfinitecreation.unknown_item": "Unknown Item",
+  "message.myinfinitecreation.mod_gate.locked": "This technology is not understood yet.",
+  "tooltip.myinfinitecreation.unknown_item": "This item is not understood yet.",
   "com.myinfinitecreation.research.technology.iron_tooling": "Iron Tooling",
   "com.myinfinitecreation.research.technology.iron_tooling.name": "Iron Tooling",
   "com.myinfinitecreation.research.technology.iron_tooling.subtitle": "Unlock basic iron tool work."

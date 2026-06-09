@@ -1,0 +1,24 @@
+{
+  "type": "create:mechanical_crafting",
+  "acceptMirrored": false,
+  "pattern": [
+    "ESE",
+    "SBS",
+    "ESE"
+  ],
+  "key": {
+    "B": {
+      "item": "create_sa:brass_cube"
+    },
+    "E": {
+      "item": "tconstruct:ender_slime"
+    },
+    "S": {
+      "item": "tconstruct:scorched_brick"
+    }
+  },
+  "result": {
+    "item": "immersiveengineering:blastbrick",
+    "count": 3
+  }
+}

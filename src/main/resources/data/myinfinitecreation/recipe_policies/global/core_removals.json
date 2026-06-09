@@ -29,16 +29,33 @@
       ]
     },
     {
-      "name": "CraftTweaker MVP - selected progression outputs",
+      "name": "CraftTweaker replacements - old IE coke/blast brick crafting recipes",
+      "id": [
+        "immersiveengineering:crafting/cokebrick",
+        "immersiveengineering:crafting/blastbrick"
+      ]
+    },
+    {
+      "name": "CraftTweaker replacements - old compass crafting recipes",
+      "id": [
+        "naturescompass:natures_compass",
+        "naturescompass:repair_natures_compass",
+        "explorerscompass:explorers_compass",
+        "explorerscompass:repair_explorers_compass"
+      ]
+    },
+    {
+      "name": "CraftTweaker replacements - old MineColonies supply deployer recipes",
+      "id": [
+        "minecolonies:supplycampdeployer",
+        "minecolonies:supplychestdeployer"
+      ]
+    },
+    {
+      "name": "CraftTweaker MVP - selected progression outputs without replacements yet",
       "output": [
-        "immersiveengineering:cokebrick",
-        "immersiveengineering:blastbrick",
         "immersiveengineering:component_electronic",
         "immersiveengineering:component_electronic_adv",
-        "minecolonies:supplycampdeployer",
-        "minecolonies:supplychestdeployer",
-        "naturescompass:naturescompass",
-        "explorerscompass:explorerscompass",
         "ae2:inscriber",
         "wirelessredstone:circuit"
       ]

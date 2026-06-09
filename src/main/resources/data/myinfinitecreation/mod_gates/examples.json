@@ -1,0 +1,16 @@
+{
+  "replace": false,
+  "rules": [
+    {
+      "name": "Example - Unknown examplemod until stage 2",
+      "modid": "examplemod",
+      "required_stage": "2",
+      "hide_in_jei": true,
+      "mask_name": true,
+      "allow_pickup": true,
+      "prevent_use": true,
+      "prevent_place": true,
+      "prevent_break_blocks": true
+    }
+  ]
+}

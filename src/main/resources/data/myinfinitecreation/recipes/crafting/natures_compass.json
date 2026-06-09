@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "tools",
+  "pattern": [
+    "DLG",
+    "LCL",
+    "RLI"
+  ],
+  "key": {
+    "C": {
+      "item": "minecraft:compass"
+    },
+    "D": {
+      "item": "minecraft:diamond"
+    },
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "L": {
+      "tag": "minecraft:logs"
+    },
+    "R": {
+      "item": "minecraft:copper_ingot"
+    }
+  },
+  "result": {
+    "item": "naturescompass:naturescompass"
+  }
+}

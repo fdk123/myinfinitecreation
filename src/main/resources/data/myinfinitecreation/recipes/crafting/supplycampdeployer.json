@@ -1,0 +1,33 @@
+{
+  "type": "myinfinitecreation:shaped_with_remainders",
+  "category": "misc",
+  "pattern": [
+    "HBE",
+    "SDS",
+    "SSS"
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:beacon",
+      "reuse": true
+    },
+    "D": {
+      "item": "minecraft:dragon_breath"
+    },
+    "E": {
+      "item": "minecraft:dragon_egg",
+      "reuse": true
+    },
+    "H": {
+      "item": "minecraft:dragon_head",
+      "reuse": true
+    },
+    "S": {
+      "tag": "sophisticatedstorage:base_tier_wooden_storage"
+    }
+  },
+  "result": {
+    "item": "minecolonies:supplycampdeployer"
+  },
+  "show_notification": true
+}
