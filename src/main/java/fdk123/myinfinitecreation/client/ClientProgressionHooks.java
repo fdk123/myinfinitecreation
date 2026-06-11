@@ -49,8 +49,11 @@ public class ClientProgressionHooks {
         if (stack.isEmpty()) {
             return null;
         }
+        if (isAllowedItem(player, stack)) {
+            return null;
+        }
         for (ModGateRule rule : modGateRules) {
-            if (matchesItem(rule, stack) && !isUnlocked(player, rule)) {
+            if (rule.isRestrict() && matchesItem(rule, stack) && !isUnlocked(player, rule)) {
                 return rule;
             }
         }
@@ -58,8 +61,15 @@ public class ClientProgressionHooks {
     }
 
     public static boolean isUnlocked(Player player, ModGateRule rule) {
+        if (rule.requiredStages.isEmpty() && rule.requiredResearches.isEmpty()) {
+            return true;
+        }
         return player != null && rule.requiredStages.stream().anyMatch(stage -> new StageAccess().hasStage(player, stage))
                 || rule.requiredResearches.stream().anyMatch(ClientProgressionHooks::hasMineColoniesResearch);
+    }
+
+    public static boolean isAllowedItem(Player player, ItemStack stack) {
+        return modGateRules.stream().anyMatch(rule -> rule.isAllow() && matchesItem(rule, stack) && isUnlocked(player, rule));
     }
 
     public static boolean matchesItem(ModGateRule rule, ItemStack stack) {

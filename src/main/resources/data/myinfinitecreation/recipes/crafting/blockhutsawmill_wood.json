@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "PSP",
+    "AAA",
+    "PPP"
+  ],
+  "key": {
+    "A": {
+      "type": "forge:partial_nbt",
+      "item": "tconstruct:small_axe_head",
+      "nbt": {
+        "Material": "tconstruct:wood"
+      }
+    },
+    "P": {
+      "tag": "minecraft:planks"
+    },
+    "S": {
+      "item": "structurize:sceptergold"
+    }
+  },
+  "result": {
+    "item": "minecolonies:blockhutsawmill"
+  }
+}

@@ -4,11 +4,13 @@ import fdk123.myinfinitecreation.command.MicCommands;
 import fdk123.myinfinitecreation.network.MicNetwork;
 import fdk123.myinfinitecreation.progression.ModGateService;
 import fdk123.myinfinitecreation.progression.ProgressionGateService;
+import fdk123.myinfinitecreation.progression.ResearchStageUnlockService;
 import fdk123.myinfinitecreation.recipe.ModRecipeSerializers;
 import fdk123.myinfinitecreation.recipe.RecipePolicyService;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.OnDatapackSyncEvent;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -28,6 +30,7 @@ public class MyInfiniteCreation {
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
     public static final ProgressionGateService PROGRESSION_GATES = new ProgressionGateService();
     public static final ModGateService MOD_GATES = new ModGateService();
+    public static final ResearchStageUnlockService RESEARCH_STAGE_UNLOCKS = new ResearchStageUnlockService();
 
     private final RecipePolicyService recipePolicyService = new RecipePolicyService();
     private final MicCommands commands = new MicCommands(recipePolicyService);
@@ -42,8 +45,7 @@ public class MyInfiniteCreation {
     @SubscribeEvent
     public void onServerStarted(ServerStartedEvent event) {
         recipePolicyService.apply(event.getServer());
-        PROGRESSION_GATES.load(event.getServer());
-        MOD_GATES.load(event.getServer());
+        loadDatapackBackedServices(event.getServer());
     }
 
     @SubscribeEvent
@@ -54,11 +56,20 @@ public class MyInfiniteCreation {
     @SubscribeEvent
     public void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
         if (event.getEntity() instanceof net.minecraft.server.level.ServerPlayer player) {
-            MicNetwork.syncRecipeGates(player, PROGRESSION_GATES);
-            MicNetwork.syncModGates(player, MOD_GATES);
-            MicNetwork.syncStage(player);
-            MicNetwork.syncMineColoniesResearch(player);
+            if (RESEARCH_STAGE_UNLOCKS.apply(player)) {
+                MicNetwork.syncStage(player.server);
+            }
+            syncProgressionData(player);
         }
+    }
+
+    @SubscribeEvent
+    public void onDatapackSync(OnDatapackSyncEvent event) {
+        if (event.getPlayer() == null) {
+            recipePolicyService.reload(event.getPlayerList().getServer());
+            loadDatapackBackedServices(event.getPlayerList().getServer());
+        }
+        event.getPlayers().forEach(this::syncProgressionData);
     }
 
     @SubscribeEvent
@@ -101,6 +112,9 @@ public class MyInfiniteCreation {
         }
         researchSyncTick = 0;
         for (net.minecraft.server.level.ServerPlayer player : event.getServer().getPlayerList().getPlayers()) {
+            if (RESEARCH_STAGE_UNLOCKS.apply(player)) {
+                MicNetwork.syncStage(player.server);
+            }
             MicNetwork.syncMineColoniesResearch(player);
         }
     }
@@ -110,5 +124,19 @@ public class MyInfiniteCreation {
         recipePolicyService.clear();
         PROGRESSION_GATES.clear();
         MOD_GATES.clear();
+        RESEARCH_STAGE_UNLOCKS.clear();
+    }
+
+    private void loadDatapackBackedServices(net.minecraft.server.MinecraftServer server) {
+        PROGRESSION_GATES.load(server);
+        MOD_GATES.load(server);
+        RESEARCH_STAGE_UNLOCKS.load(server);
+    }
+
+    private void syncProgressionData(net.minecraft.server.level.ServerPlayer player) {
+        MicNetwork.syncRecipeGates(player, PROGRESSION_GATES);
+        MicNetwork.syncModGates(player, MOD_GATES);
+        MicNetwork.syncStage(player);
+        MicNetwork.syncMineColoniesResearch(player);
     }
 }

@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "PSP",
+    "PAP",
+    "PPP"
+  ],
+  "key": {
+    "A": {
+      "type": "forge:partial_nbt",
+      "item": "tconstruct:small_axe_head",
+      "nbt": {
+        "Material": "tconstruct:rock"
+      }
+    },
+    "P": {
+      "tag": "minecraft:planks"
+    },
+    "S": {
+      "item": "structurize:sceptergold"
+    }
+  },
+  "result": {
+    "item": "minecolonies:blockhutlumberjack",
+    "count": 2
+  }
+}

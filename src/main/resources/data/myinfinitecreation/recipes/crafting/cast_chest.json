@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " G ",
+    "BSB",
+    "BEB"
+  ],
+  "key": {
+    "B": {
+      "item": "tconstruct:seared_brick"
+    },
+    "E": {
+      "item": "tconstruct:seared_bricks"
+    },
+    "G": {
+      "tag": "tconstruct:casts/gold"
+    },
+    "S": {
+      "tag": "sophisticatedstorage:base_tier_wooden_storage"
+    }
+  },
+  "result": {
+    "item": "tconstruct:cast_chest"
+  }
+}

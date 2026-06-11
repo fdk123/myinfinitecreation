@@ -1,0 +1,31 @@
+{
+  "type": "myinfinitecreation:shaped_with_remainders",
+  "category": "misc",
+  "pattern": [
+    "BAB",
+    "IWI",
+    "III"
+  ],
+  "key": {
+    "A": {
+      "type": "forge:partial_nbt",
+      "item": "tconstruct:adze_head",
+      "nbt": {
+        "Material": "tconstruct:wood"
+      }
+    },
+    "B": {
+      "item": "minecraft:brick"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "W": {
+      "item": "minecraft:water_bucket",
+      "remainder": "minecraft:bucket"
+    }
+  },
+  "result": {
+    "item": "farmersdelight:cooking_pot"
+  }
+}

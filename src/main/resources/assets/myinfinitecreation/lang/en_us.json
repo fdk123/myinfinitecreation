@@ -5,5 +5,11 @@
   "tooltip.myinfinitecreation.unknown_item": "This item is not understood yet.",
   "com.myinfinitecreation.research.technology.iron_tooling": "Iron Tooling",
   "com.myinfinitecreation.research.technology.iron_tooling.name": "Iron Tooling",
-  "com.myinfinitecreation.research.technology.iron_tooling.subtitle": "Unlock basic iron tool work."
+  "com.myinfinitecreation.research.technology.iron_tooling.subtitle": "Unlock basic iron tool work.",
+  "com.myinfinitecreation.research.combat.diamond_armor": "Diamond Armor",
+  "com.myinfinitecreation.research.combat.diamond_armor.name": "Diamond Armor",
+  "com.myinfinitecreation.research.combat.diamond_armor.subtitle": "Teach the colony blacksmith to work diamond armor.",
+  "com.myinfinitecreation.research.combat.netherite_armor": "Netherite Armor",
+  "com.myinfinitecreation.research.combat.netherite_armor.name": "Netherite Armor",
+  "com.myinfinitecreation.research.combat.netherite_armor.subtitle": "Teach the colony blacksmith to upgrade armor with netherite."
 }

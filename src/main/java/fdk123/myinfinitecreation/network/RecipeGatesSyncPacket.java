@@ -24,6 +24,7 @@ public record RecipeGatesSyncPacket(List<ProgressionGateRule> rules) {
             writeResourceLocations(buffer, rule.types);
             writeResourceLocations(buffer, rule.outputs);
             writeResourceLocations(buffer, rule.outputTags);
+            buffer.writeBoolean(rule.hideInJei);
         }
     }
 
@@ -38,6 +39,7 @@ public record RecipeGatesSyncPacket(List<ProgressionGateRule> rules) {
             rule.types.addAll(readResourceLocations(buffer));
             rule.outputs.addAll(readResourceLocations(buffer));
             rule.outputTags.addAll(readResourceLocations(buffer));
+            rule.hideInJei = buffer.readBoolean();
             rules.add(rule);
         }
         return new RecipeGatesSyncPacket(rules);

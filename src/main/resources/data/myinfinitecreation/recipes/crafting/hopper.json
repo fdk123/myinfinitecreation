@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "pattern": [
+    "I I",
+    "ISI",
+    " I "
+  ],
+  "key": {
+    "I": {
+      "tag": "forge:ingots/iron"
+    },
+    "S": {
+      "tag": "sophisticatedstorage:base_tier_wooden_storage"
+    }
+  },
+  "result": {
+    "item": "minecraft:hopper"
+  }
+}

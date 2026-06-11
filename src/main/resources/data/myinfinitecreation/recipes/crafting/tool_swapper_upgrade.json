@@ -1,0 +1,51 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "RBR",
+    "PUA",
+    "IXI"
+  ],
+  "key": {
+    "A": {
+      "type": "forge:partial_nbt",
+      "item": "tconstruct:adze_head",
+      "nbt": {
+        "Material": "tconstruct:wood"
+      }
+    },
+    "B": {
+      "type": "forge:partial_nbt",
+      "item": "tconstruct:small_blade",
+      "nbt": {
+        "Material": "tconstruct:wood"
+      }
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "P": {
+      "type": "forge:partial_nbt",
+      "item": "tconstruct:pick_head",
+      "nbt": {
+        "Material": "tconstruct:wood"
+      }
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "U": {
+      "item": "sophisticatedbackpacks:upgrade_base"
+    },
+    "X": {
+      "type": "forge:partial_nbt",
+      "item": "tconstruct:small_axe_head",
+      "nbt": {
+        "Material": "tconstruct:wood"
+      }
+    }
+  },
+  "result": {
+    "item": "sophisticatedbackpacks:tool_swapper_upgrade"
+  }
+}

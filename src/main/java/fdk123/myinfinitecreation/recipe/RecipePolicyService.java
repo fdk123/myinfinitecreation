@@ -27,6 +27,11 @@ public class RecipePolicyService {
         apply(server, RecipeStageState.get(server).getActiveStage(), true);
     }
 
+    public void reload(MinecraftServer server) {
+        clear();
+        apply(server, RecipeStageState.get(server).getActiveStage(), false);
+    }
+
     public void setStage(MinecraftServer server, String stage) {
         RecipeStageState state = RecipeStageState.get(server);
         state.setActiveStage(stage);

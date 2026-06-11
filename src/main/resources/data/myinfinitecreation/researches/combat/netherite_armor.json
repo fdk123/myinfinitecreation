@@ -1,0 +1,33 @@
+{
+  "branch": "minecolonies:combat",
+  "costs": [
+    {
+      "type": "minecolonies:item_simple",
+      "item": "minecraft:netherite_ingot",
+      "quantity": 4
+    },
+    {
+      "type": "minecolonies:item_simple",
+      "item": "minecraft:netherite_upgrade_smithing_template",
+      "quantity": 1
+    }
+  ],
+  "effects": [
+    {
+      "id": "myinfinitecreation:effects/netheritearmorunlock",
+      "level": 1
+    }
+  ],
+  "icon": "minecraft:netherite_chestplate",
+  "parentResearch": "myinfinitecreation:combat/diamond_armor",
+  "requirements": [
+    {
+      "type": "minecolonies:single-building",
+      "building": "minecolonies:blacksmith",
+      "level": 4
+    }
+  ],
+  "researchLevel": 4,
+  "sortOrder": 102,
+  "subtitle": "com.myinfinitecreation.research.combat.netherite_armor.subtitle"
+}

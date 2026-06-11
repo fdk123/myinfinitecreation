@@ -54,6 +54,14 @@ Mod gates are broader progression restrictions for whole mods or item/block grou
 
 They do not delete items. Locked items can still be picked up, but they can be hidden from JEI, shown as an unknown item in tooltips, and blocked from use/place/break interactions until the required stage or MineColonies research is unlocked.
 
+Rules use `mode: "restrict"` by default. A `mode: "allow"` rule can open selected items or blocks earlier than a broad mod restriction. An allow rule without `required_stage` or `required_research` is always active, which is useful for split namespaces such as Thermal. The cascade is:
+
+1. unlocked `allow` rules make matching entries available
+2. locked `restrict` rules hide/block matching entries
+3. unlocked `restrict` rules stop blocking their entries
+
+This lets a few early components from a mod be available while the rest of that mod remains unknown.
+
 Example:
 
 ```json
@@ -61,7 +69,21 @@ Example:
   "replace": false,
   "rules": [
     {
+      "name": "Early Create components",
+      "mode": "allow",
+      "required_stage": "1",
+      "items": [
+        "create:andesite_alloy",
+        "create:shaft",
+        "create:cogwheel"
+      ],
+      "blocks": [
+        "create:andesite_casing"
+      ]
+    },
+    {
       "name": "Create entry",
+      "mode": "restrict",
       "modid": "create",
       "required_research": "myinfinitecreation:technology/create_entry",
       "hide_in_jei": true,
@@ -69,13 +91,7 @@ Example:
       "allow_pickup": true,
       "prevent_use": true,
       "prevent_place": true,
-      "prevent_break_blocks": true,
-      "except_items": [
-        "create:andesite_alloy"
-      ],
-      "except_blocks": [
-        "create:andesite_casing"
-      ]
+      "prevent_break_blocks": true
     }
   ]
 }
@@ -140,6 +156,27 @@ Recipe gate example using that research:
       "required_research": "myinfinitecreation:technology/iron_tooling",
       "type": "minecraft:crafting",
       "output": "minecraft:iron_pickaxe"
+    }
+  ]
+}
+```
+
+MineColonies researches can optionally unlock TeamStages stages through datapack JSON under:
+
+`data/<namespace>/research_stage_unlocks/*.json`
+
+Use this only for public milestones that other systems should see, such as FTB Quests chapters or broad mod unlocks. Researches do not need a stage if they are only used directly by `recipe_gates` or `mod_gates`.
+
+Example:
+
+```json
+{
+  "replace": false,
+  "unlocks": [
+    {
+      "name": "Iron Tooling research stage bridge",
+      "research": "myinfinitecreation:technology/iron_tooling",
+      "stage": "mic_research_iron_tooling"
     }
   ]
 }

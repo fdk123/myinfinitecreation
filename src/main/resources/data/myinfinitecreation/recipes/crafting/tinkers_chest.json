@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " P ",
+    "LSL",
+    "LWL"
+  ],
+  "key": {
+    "L": {
+      "tag": "forge:gems/lapis"
+    },
+    "P": {
+      "item": "tconstruct:pattern"
+    },
+    "S": {
+      "tag": "sophisticatedstorage:base_tier_wooden_storage"
+    },
+    "W": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "result": {
+    "item": "tconstruct:tinkers_chest"
+  }
+}

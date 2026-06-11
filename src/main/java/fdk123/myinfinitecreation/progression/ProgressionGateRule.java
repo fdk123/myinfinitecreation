@@ -15,6 +15,7 @@ public class ProgressionGateRule {
     public Set<ResourceLocation> types = new LinkedHashSet<>();
     public Set<ResourceLocation> outputs = new LinkedHashSet<>();
     public Set<ResourceLocation> outputTags = new LinkedHashSet<>();
+    public boolean hideInJei = true;
 
     public static ProgressionGateRule fromJson(JsonObject object) {
         ProgressionGateRule rule = new ProgressionGateRule();
@@ -31,6 +32,7 @@ public class ProgressionGateRule {
         readResourceLocations(object, "outputs", rule.outputs);
         readResourceLocations(object, "output_tag", rule.outputTags);
         readResourceLocations(object, "output_tags", rule.outputTags);
+        rule.hideInJei = readBoolean(object, "hide_in_jei", rule.hideInJei);
         return rule;
     }
 
@@ -56,6 +58,10 @@ public class ProgressionGateRule {
             return;
         }
         target.addAll(readStringValues(object.get(key)));
+    }
+
+    private static boolean readBoolean(JsonObject object, String key, boolean fallback) {
+        return object.has(key) ? object.get(key).getAsBoolean() : fallback;
     }
 
     private static Set<String> readStringValues(JsonElement element) {

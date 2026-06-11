@@ -7,7 +7,8 @@
   "refmap": "myinfinitecreation.refmap.json",
   "mixins": [
     "CreateRecipeGridHandlerMixin",
-    "ResultSlotMixin"
+    "ResultSlotMixin",
+    "TConstructCraftingStationMenuMixin"
   ],
   "injectors": {
     "defaultRequire": 1

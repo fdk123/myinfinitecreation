@@ -35,8 +35,11 @@ public class ModGateService {
         if (stack.isEmpty()) {
             return null;
         }
+        if (isItemAllowed(player, stack)) {
+            return null;
+        }
         for (ModGateRule rule : rules) {
-            if (matchesItem(rule, stack) && !isUnlocked(player, rule)) {
+            if (rule.isRestrict() && matchesItem(rule, stack) && !isUnlocked(player, rule)) {
                 return rule;
             }
         }
@@ -44,8 +47,11 @@ public class ModGateService {
     }
 
     public ModGateRule lockedBlockRule(Player player, BlockState state) {
+        if (isBlockAllowed(player, state)) {
+            return null;
+        }
         for (ModGateRule rule : rules) {
-            if (matchesBlock(rule, state) && !isUnlocked(player, rule)) {
+            if (rule.isRestrict() && matchesBlock(rule, state) && !isUnlocked(player, rule)) {
                 return rule;
             }
         }
@@ -89,8 +95,19 @@ public class ModGateService {
     }
 
     public boolean isUnlocked(Player player, ModGateRule rule) {
+        if (rule.requiredStages.isEmpty() && rule.requiredResearches.isEmpty()) {
+            return true;
+        }
         return player != null && (rule.requiredStages.stream().anyMatch(stage -> stageAccess.hasStage(player, stage))
                 || rule.requiredResearches.stream().anyMatch(research -> mineColoniesResearchAccess.hasCompletedResearch(player, research)));
+    }
+
+    public boolean isItemAllowed(Player player, ItemStack stack) {
+        return rules.stream().anyMatch(rule -> rule.isAllow() && matchesItem(rule, stack) && isUnlocked(player, rule));
+    }
+
+    public boolean isBlockAllowed(Player player, BlockState state) {
+        return rules.stream().anyMatch(rule -> rule.isAllow() && matchesBlock(rule, state) && isUnlocked(player, rule));
     }
 
     public boolean isUnlocked(Level level, ModGateRule rule) {

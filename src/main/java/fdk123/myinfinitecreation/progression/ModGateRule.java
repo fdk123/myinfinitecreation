@@ -9,7 +9,11 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class ModGateRule {
+    public static final String MODE_RESTRICT = "restrict";
+    public static final String MODE_ALLOW = "allow";
+
     public String name = "unnamed";
+    public String mode = MODE_RESTRICT;
     public Set<String> requiredStages = new LinkedHashSet<>();
     public Set<ResourceLocation> requiredResearches = new LinkedHashSet<>();
     public Set<String> modids = new LinkedHashSet<>();
@@ -30,6 +34,12 @@ public class ModGateRule {
         ModGateRule rule = new ModGateRule();
         if (object.has("name")) {
             rule.name = object.get("name").getAsString();
+        }
+        if (object.has("mode")) {
+            rule.mode = object.get("mode").getAsString();
+            if (!MODE_RESTRICT.equals(rule.mode) && !MODE_ALLOW.equals(rule.mode)) {
+                throw new IllegalArgumentException("Invalid mod gate mode '" + rule.mode + "' in rule '" + rule.name + "'");
+            }
         }
         readStrings(object, "required_stage", rule.requiredStages);
         readStrings(object, "required_stages", rule.requiredStages);
@@ -59,8 +69,19 @@ public class ModGateRule {
     }
 
     public boolean isEmpty() {
-        return requiredStages.isEmpty() && requiredResearches.isEmpty()
-                || modids.isEmpty() && items.isEmpty() && itemTags.isEmpty() && blocks.isEmpty() && blockTags.isEmpty();
+        boolean hasNoTargets = modids.isEmpty() && items.isEmpty() && itemTags.isEmpty() && blocks.isEmpty() && blockTags.isEmpty();
+        if (hasNoTargets) {
+            return true;
+        }
+        return isRestrict() && requiredStages.isEmpty() && requiredResearches.isEmpty();
+    }
+
+    public boolean isAllow() {
+        return MODE_ALLOW.equals(mode);
+    }
+
+    public boolean isRestrict() {
+        return MODE_RESTRICT.equals(mode);
     }
 
     private static boolean readBoolean(JsonObject object, String key, boolean fallback) {

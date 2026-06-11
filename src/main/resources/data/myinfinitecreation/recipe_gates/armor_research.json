@@ -1,0 +1,29 @@
+{
+  "replace": false,
+  "rules": [
+    {
+      "name": "Diamond armor requires MineColonies armor research",
+      "hide_in_jei": false,
+      "required_stage": "mic_research_diamond_armor",
+      "required_research": "myinfinitecreation:combat/diamond_armor",
+      "outputs": [
+        "minecraft:diamond_helmet",
+        "minecraft:diamond_chestplate",
+        "minecraft:diamond_leggings",
+        "minecraft:diamond_boots"
+      ]
+    },
+    {
+      "name": "Netherite armor requires MineColonies armor research",
+      "hide_in_jei": false,
+      "required_stage": "mic_research_netherite_armor",
+      "required_research": "myinfinitecreation:combat/netherite_armor",
+      "outputs": [
+        "minecraft:netherite_helmet",
+        "minecraft:netherite_chestplate",
+        "minecraft:netherite_leggings",
+        "minecraft:netherite_boots"
+      ]
+    }
+  ]
+}

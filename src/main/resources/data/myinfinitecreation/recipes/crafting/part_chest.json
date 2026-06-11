@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " P ",
+    "RSR",
+    "RWR"
+  ],
+  "key": {
+    "P": {
+      "item": "tconstruct:pattern"
+    },
+    "R": {
+      "tag": "forge:rods/wooden"
+    },
+    "S": {
+      "tag": "sophisticatedstorage:base_tier_wooden_storage"
+    },
+    "W": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "result": {
+    "item": "tconstruct:part_chest"
+  }
+}

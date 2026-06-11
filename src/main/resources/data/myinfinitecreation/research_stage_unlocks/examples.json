@@ -1,0 +1,20 @@
+{
+  "replace": false,
+  "unlocks": [
+    {
+      "name": "Iron Tooling research stage bridge",
+      "research": "myinfinitecreation:technology/iron_tooling",
+      "stage": "mic_research_iron_tooling"
+    },
+    {
+      "name": "Diamond Armor research stage bridge",
+      "research": "myinfinitecreation:combat/diamond_armor",
+      "stage": "mic_research_diamond_armor"
+    },
+    {
+      "name": "Netherite Armor research stage bridge",
+      "research": "myinfinitecreation:combat/netherite_armor",
+      "stage": "mic_research_netherite_armor"
+    }
+  ]
+}

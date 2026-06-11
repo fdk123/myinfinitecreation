@@ -2,15 +2,16 @@
   "replace": false,
   "rules": [
     {
-      "name": "Example - Early examplemod item at stage 1",
-      "mode": "allow",
-      "item": "examplemod:early_component",
-      "required_stage": "1"
-    },
-    {
-      "name": "Example - Unknown examplemod until stage 2",
+      "name": "Stage 2 - MineColonies",
       "mode": "restrict",
-      "modid": "examplemod",
+      "modids": [
+        "minecolonies",
+        "minecolonies_tweaks",
+        "twilightforest",
+        "alekiships",
+        "fantasyfurniture",
+        "betsyross"
+      ],
       "required_stage": "2",
       "hide_in_jei": true,
       "mask_name": true,

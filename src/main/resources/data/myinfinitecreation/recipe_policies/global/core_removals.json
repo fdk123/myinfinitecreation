@@ -45,10 +45,49 @@
       ]
     },
     {
+      "name": "CraftTweaker replacements - vanilla utility recipes",
+      "id": [
+        "minecraft:hopper"
+      ]
+    },
+    {
+      "name": "CraftTweaker replacements - stage 1 utility workstations",
+      "id": [
+        "farmersdelight:cooking_pot",
+        "sophisticatedbackpacks:tool_swapper_upgrade",
+        "chipped:carpenters_table"
+      ]
+    },
+    {
       "name": "CraftTweaker replacements - old MineColonies supply deployer recipes",
       "id": [
         "minecolonies:supplycampdeployer",
         "minecolonies:supplychestdeployer"
+      ]
+    },
+    {
+      "name": "CraftTweaker replacements - early MineColonies hut recipes",
+      "id": [
+        "minecolonies:blockhutlumberjack",
+        "minecolonies:blockhutlumberjackstone",
+        "minecolonies:blockhutsawmill",
+        "minecolonies:blockhutfarmer",
+        "minecolonies:blockhutfarmerstone",
+        "minecolonies:blockhutminer",
+        "minecolonies:blockhutminerstone"
+      ]
+    },
+    {
+      "name": "Progression - armor moved to MineColonies blacksmith",
+      "id": [
+        "minecraft:diamond_helmet",
+        "minecraft:diamond_chestplate",
+        "minecraft:diamond_leggings",
+        "minecraft:diamond_boots",
+        "minecraft:netherite_helmet_smithing",
+        "minecraft:netherite_chestplate_smithing",
+        "minecraft:netherite_leggings_smithing",
+        "minecraft:netherite_boots_smithing"
       ]
     },
     {

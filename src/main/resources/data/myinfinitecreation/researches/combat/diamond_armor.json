@@ -1,0 +1,27 @@
+{
+  "branch": "minecolonies:combat",
+  "costs": [
+    {
+      "type": "minecolonies:item_simple",
+      "item": "minecraft:diamond",
+      "quantity": 16
+    }
+  ],
+  "effects": [
+    {
+      "id": "myinfinitecreation:effects/diamondarmorunlock",
+      "level": 1
+    }
+  ],
+  "icon": "minecraft:diamond_chestplate",
+  "requirements": [
+    {
+      "type": "minecolonies:single-building",
+      "building": "minecolonies:blacksmith",
+      "level": 1
+    }
+  ],
+  "researchLevel": 1,
+  "sortOrder": 101,
+  "subtitle": "com.myinfinitecreation.research.combat.diamond_armor.subtitle"
+}

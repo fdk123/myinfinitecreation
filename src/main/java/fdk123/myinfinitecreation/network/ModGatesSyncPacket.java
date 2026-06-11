@@ -19,6 +19,7 @@ public record ModGatesSyncPacket(List<ModGateRule> rules) {
         buffer.writeVarInt(packet.rules.size());
         for (ModGateRule rule : packet.rules) {
             buffer.writeUtf(rule.name);
+            buffer.writeUtf(rule.mode);
             writeStrings(buffer, rule.requiredStages);
             writeResourceLocations(buffer, rule.requiredResearches);
             writeStrings(buffer, rule.modids);
@@ -43,6 +44,7 @@ public record ModGatesSyncPacket(List<ModGateRule> rules) {
         for (int i = 0; i < size; i++) {
             ModGateRule rule = new ModGateRule();
             rule.name = buffer.readUtf();
+            rule.mode = buffer.readUtf();
             rule.requiredStages.addAll(readStrings(buffer));
             rule.requiredResearches.addAll(readResourceLocations(buffer));
             rule.modids.addAll(readStrings(buffer));

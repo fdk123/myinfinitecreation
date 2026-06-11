@@ -20,7 +20,8 @@ public class MicMixinPlugin implements IMixinConfigPlugin {
 
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
-        if (mixinClassName.endsWith("CreateRecipeGridHandlerMixin")) {
+        if (mixinClassName.endsWith("CreateRecipeGridHandlerMixin")
+                || mixinClassName.endsWith("TConstructCraftingStationMenuMixin")) {
             return classExists(targetClassName);
         }
         return true;
@@ -44,11 +45,7 @@ public class MicMixinPlugin implements IMixinConfigPlugin {
     }
 
     private boolean classExists(String className) {
-        try {
-            Class.forName(className, false, MicMixinPlugin.class.getClassLoader());
-            return true;
-        } catch (ClassNotFoundException ignored) {
-            return false;
-        }
+        String classResource = className.replace('.', '/') + ".class";
+        return MicMixinPlugin.class.getClassLoader().getResource(classResource) != null;
     }
 }

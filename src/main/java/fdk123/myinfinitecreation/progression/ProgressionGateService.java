@@ -123,6 +123,9 @@ public class ProgressionGateService {
         if (server == null) {
             return false;
         }
+        if (server.getPlayerList().getPlayers().stream().anyMatch(player -> stageAccess.hasStage(player, stage))) {
+            return true;
+        }
         String activeStage = fdk123.myinfinitecreation.recipe.RecipeStageState.get(server).getActiveStage();
         return activeStage.equals(stage) || activeStage.equals("stage_" + stage);
     }

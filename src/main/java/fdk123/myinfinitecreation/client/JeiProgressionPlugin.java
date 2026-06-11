@@ -125,13 +125,13 @@ public class JeiProgressionPlugin implements IModPlugin {
 
         for (ProgressionGateRule rule : rules) {
             boolean unlocked = isUnlocked(player, rule);
-            if (!unlocked) {
+            if (rule.hideInJei && !unlocked) {
                 addOutputStacks(rule, stacks);
             }
         }
         for (ModGateRule rule : lockedModRules()) {
             if (rule.hideInJei) {
-                addModGateStacks(rule, stacks);
+                addModGateStacks(player, rule, stacks);
             }
         }
         return stacks;
@@ -149,7 +149,7 @@ public class JeiProgressionPlugin implements IModPlugin {
         for (CraftingRecipe recipe : minecraft.level.getRecipeManager().getAllRecipesFor(net.minecraft.world.item.crafting.RecipeType.CRAFTING)) {
             ItemStack result = recipe.getResultItem(minecraft.level.registryAccess());
             if (lockedRules.stream().anyMatch(rule -> matchesOutput(rule, result) || hasMatchingIngredient(recipe, rule))
-                    || lockedModRules.stream().anyMatch(rule -> rule.hideInJei && (matchesModGateItem(rule, result) || hasMatchingModGateIngredient(recipe, rule)))) {
+                    || lockedModRules.stream().anyMatch(rule -> rule.hideInJei && (isLockedModGateItem(rule, result) || hasMatchingModGateIngredient(recipe, rule)))) {
                 recipes.add(recipe);
             }
         }
@@ -176,7 +176,7 @@ public class JeiProgressionPlugin implements IModPlugin {
 
             ItemStack result = recipe.getResultItem(minecraft.level.registryAccess());
             boolean lockedByRecipeGate = lockedRules.stream().anyMatch(rule -> matchesOutput(rule, result));
-            boolean lockedByModGate = lockedModRules.stream().anyMatch(rule -> rule.hideInJei && matchesModGateItem(rule, result));
+            boolean lockedByModGate = lockedModRules.stream().anyMatch(rule -> rule.hideInJei && isLockedModGateItem(rule, result));
             if (!lockedByRecipeGate && !lockedByModGate) {
                 continue;
             }
@@ -253,7 +253,7 @@ public class JeiProgressionPlugin implements IModPlugin {
 
         for (ProgressionGateRule rule : rules) {
             boolean unlocked = isUnlocked(player, rule);
-            if (!unlocked) {
+            if (rule.hideInJei && !unlocked) {
                 lockedRules.add(rule);
             }
         }
@@ -266,7 +266,7 @@ public class JeiProgressionPlugin implements IModPlugin {
         List<ModGateRule> lockedRules = new ArrayList<>();
 
         for (ModGateRule rule : ClientProgressionHooks.modGateRules()) {
-            if (!ClientProgressionHooks.isUnlocked(player, rule)) {
+            if (rule.isRestrict() && !ClientProgressionHooks.isUnlocked(player, rule)) {
                 lockedRules.add(rule);
             }
         }
@@ -295,10 +295,10 @@ public class JeiProgressionPlugin implements IModPlugin {
         }
     }
 
-    private static void addModGateStacks(ModGateRule rule, List<ItemStack> stacks) {
+    private static void addModGateStacks(Player player, ModGateRule rule, List<ItemStack> stacks) {
         BuiltInRegistries.ITEM.stream()
                 .map(Item::getDefaultInstance)
-                .filter(stack -> matchesModGateItem(rule, stack))
+                .filter(stack -> matchesModGateItem(rule, stack) && ClientProgressionHooks.lockedModItemRule(player, stack) != null)
                 .forEach(stacks::add);
     }
 
@@ -317,6 +317,11 @@ public class JeiProgressionPlugin implements IModPlugin {
         return ClientProgressionHooks.matchesItem(rule, stack);
     }
 
+    private static boolean isLockedModGateItem(ModGateRule rule, ItemStack stack) {
+        Minecraft minecraft = Minecraft.getInstance();
+        return matchesModGateItem(rule, stack) && ClientProgressionHooks.lockedModItemRule(minecraft.player, stack) != null;
+    }
+
     private static boolean matchesRuleRecipeType(ProgressionGateRule rule, ResourceLocation recipeType) {
         return rule.types.isEmpty() || rule.types.contains(recipeType);
     }
@@ -330,7 +335,7 @@ public class JeiProgressionPlugin implements IModPlugin {
     private static boolean hasMatchingModGateIngredient(CraftingRecipe recipe, ModGateRule rule) {
         return recipe.getIngredients().stream()
                 .flatMap(ingredient -> Arrays.stream(ingredient.getItems()))
-                .anyMatch(stack -> matchesModGateItem(rule, stack));
+                .anyMatch(stack -> isLockedModGateItem(rule, stack));
     }
 
     private static boolean isLockedMineColoniesRecipe(Object recipe, List<ProgressionGateRule> lockedRules) {
@@ -403,9 +408,9 @@ public class JeiProgressionPlugin implements IModPlugin {
     }
 
     private static boolean matchesModGateAnvilRecipe(IJeiAnvilRecipe recipe, ModGateRule rule) {
-        return recipe.getLeftInputs().stream().anyMatch(stack -> matchesModGateItem(rule, stack))
-                || recipe.getRightInputs().stream().anyMatch(stack -> matchesModGateItem(rule, stack))
-                || recipe.getOutputs().stream().anyMatch(stack -> matchesModGateItem(rule, stack));
+        return recipe.getLeftInputs().stream().anyMatch(stack -> isLockedModGateItem(rule, stack))
+                || recipe.getRightInputs().stream().anyMatch(stack -> isLockedModGateItem(rule, stack))
+                || recipe.getOutputs().stream().anyMatch(stack -> isLockedModGateItem(rule, stack));
     }
 
     @SuppressWarnings({"rawtypes", "unchecked"})
