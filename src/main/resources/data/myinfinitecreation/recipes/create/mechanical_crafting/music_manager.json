@@ -1,0 +1,15 @@
+{
+  "type": "create:mechanical_crafting",
+  "acceptMirrored": false,
+  "pattern": ["IIB", "GWR", "UCU"],
+  "key": {
+    "B": { "item": "create:brass_casing" },
+    "C": { "tag": "forge:ingots/copper" },
+    "G": { "tag": "forge:glass_panes/colorless" },
+    "I": { "tag": "forge:plates/iron" },
+    "R": { "item": "create:redstone_link" },
+    "U": { "item": "create:belt_connector" },
+    "W": { "item": "wirelessredstone:circuit" }
+  },
+  "result": { "item": "iammusicplayer:music_manager" }
+}

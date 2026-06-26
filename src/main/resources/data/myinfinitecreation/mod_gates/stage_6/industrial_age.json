@@ -1,0 +1,26 @@
+{
+  "replace": false,
+  "rules": [
+    {
+      "name": "Stage 6 - industrial expansion",
+      "mode": "restrict",
+      "required_stage": "6",
+      "modids": [
+        "immersivepetroleum", "immersiveindustry", "createbigcannons", "create_security",
+        "extra_gauges", "engineered_schematics", "prehistoricfauna", "pantographsandwires",
+        "engineersdecor", "dustrial_decor", "immersive_furniture", "immersiveposts",
+        "immersive_paintings", "escalated"
+      ],
+      "hide_in_jei": true, "mask_name": true, "allow_pickup": true,
+      "prevent_use": true, "prevent_place": true, "prevent_break_blocks": true
+    },
+    {
+      "name": "Stage 6 - MTS biplane",
+      "mode": "restrict",
+      "required_stage": "6",
+      "item": "mts:automotives.biplane",
+      "hide_in_jei": true, "mask_name": true, "allow_pickup": true,
+      "prevent_use": true, "prevent_place": true, "prevent_break_blocks": true
+    }
+  ]
+}

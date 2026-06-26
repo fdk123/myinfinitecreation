@@ -1,0 +1,20 @@
+{
+  "type": "recipe",
+  "crafter": "crusher_custom",
+  "inputs": [
+    {
+      "count": 1,
+      "item": "immersivegeology:normal_ore_gold"
+    }
+  ],
+  "intermediate": "minecraft:air",
+  "result": "immersivegeology:dirty_crushed_ore_gold",
+  "additional-output": [
+    {
+      "item": "immersivegeology:poor_ore_gold",
+      "count": 1
+    }
+  ],
+  "loot-table": "mcoligrec:recipes/crusher/normalgoldcrushing",
+  "research-id": "minecolonies:technology/gildedhammer"
+}

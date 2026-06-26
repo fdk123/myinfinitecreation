@@ -1,0 +1,20 @@
+{
+  "type": "recipe",
+  "crafter": "crusher_custom",
+  "inputs": [
+    {
+      "count": 1,
+      "item": "immersivegeology:normal_ore_anatase"
+    }
+  ],
+  "intermediate": "minecraft:air",
+  "result": "immersivegeology:dirty_crushed_ore_anatase",
+  "additional-output": [
+    {
+      "item": "immersivegeology:poor_ore_anatase",
+      "count": 1
+    }
+  ],
+  "loot-table": "mcoligrec:recipes/crusher/normalanatasecrushing",
+  "research-id": "minecolonies:technology/gildedhammer"
+}

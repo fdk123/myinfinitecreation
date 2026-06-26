@@ -15,6 +15,11 @@ public class RecipePolicyRule {
     public Set<ResourceLocation> types = new LinkedHashSet<>();
     public Set<ResourceLocation> outputs = new LinkedHashSet<>();
     public Set<ResourceLocation> outputTags = new LinkedHashSet<>();
+    public Set<ResourceLocation> inputs = new LinkedHashSet<>();
+    public Set<ResourceLocation> inputTags = new LinkedHashSet<>();
+    public Set<ResourceLocation> exceptIds = new LinkedHashSet<>();
+    public Set<ResourceLocation> exceptTypes = new LinkedHashSet<>();
+    public Set<ResourceLocation> exceptOutputs = new LinkedHashSet<>();
 
     public static RecipePolicyRule fromJson(JsonObject object) {
         RecipePolicyRule rule = new RecipePolicyRule();
@@ -27,11 +32,22 @@ public class RecipePolicyRule {
         readResourceLocations(object, "output", rule.outputs);
         readResourceLocations(object, "output_tag", rule.outputTags);
         readResourceLocations(object, "output_tags", rule.outputTags);
+        readResourceLocations(object, "input", rule.inputs);
+        readResourceLocations(object, "inputs", rule.inputs);
+        readResourceLocations(object, "input_tag", rule.inputTags);
+        readResourceLocations(object, "input_tags", rule.inputTags);
+        readResourceLocations(object, "except_id", rule.exceptIds);
+        readResourceLocations(object, "except_ids", rule.exceptIds);
+        readResourceLocations(object, "except_type", rule.exceptTypes);
+        readResourceLocations(object, "except_types", rule.exceptTypes);
+        readResourceLocations(object, "except_output", rule.exceptOutputs);
+        readResourceLocations(object, "except_outputs", rule.exceptOutputs);
         return rule;
     }
 
     public boolean isEmpty() {
-        return ids.isEmpty() && namespaces.isEmpty() && types.isEmpty() && outputs.isEmpty() && outputTags.isEmpty();
+        return ids.isEmpty() && namespaces.isEmpty() && types.isEmpty() && outputs.isEmpty()
+                && outputTags.isEmpty() && inputs.isEmpty() && inputTags.isEmpty();
     }
 
     private static void readResourceLocations(JsonObject object, String key, Set<ResourceLocation> target) {

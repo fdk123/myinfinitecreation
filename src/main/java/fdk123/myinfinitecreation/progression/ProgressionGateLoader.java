@@ -1,6 +1,5 @@
 package fdk123.myinfinitecreation.progression;
 
-import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import fdk123.myinfinitecreation.MyInfiniteCreation;
@@ -15,7 +14,6 @@ import java.util.List;
 import java.util.Map;
 
 public class ProgressionGateLoader {
-    private static final Gson GSON = new Gson();
     private static final String DIRECTORY = "recipe_gates";
 
     public List<ProgressionGateRule> load(ResourceManager resourceManager) {
@@ -33,8 +31,7 @@ public class ProgressionGateLoader {
     private void loadFile(ResourceLocation location, Resource resource, List<ProgressionGateRule> rules) {
         try (BufferedReader reader = resource.openAsReader()) {
             JsonObject json = JsonParser.parseReader(reader).getAsJsonObject();
-            ProgressionGateFile file = GSON.fromJson(json, ProgressionGateFile.class);
-            if (file.replace) {
+            if (json.has("replace") && json.get("replace").getAsBoolean()) {
                 rules.clear();
             }
             if (json.has("rules")) {

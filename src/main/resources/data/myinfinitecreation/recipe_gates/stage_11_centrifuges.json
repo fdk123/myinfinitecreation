@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "rules": [
+    {
+      "name": "Stage 11 - centrifuge tiers",
+      "required_stage": "11",
+      "type": "minecraft:crafting",
+      "outputs": [
+        "centrifugetiersreproduced:high_end_centrifuge",
+        "centrifugetiersreproduced:nuclear_centrifuge",
+        "centrifugetiersreproduced:cosmic_centrifuge"
+      ]
+    }
+  ]
+}

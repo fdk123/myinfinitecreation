@@ -1,0 +1,15 @@
+{
+  "type": "recipe",
+  "crafter": "crusher_custom",
+  "inputs": [
+    {
+      "count": 2,
+      "item": "immersivegeology:poor_ore_bauxite"
+    }
+  ],
+  "intermediate": "minecraft:air",
+  "result": "immersivegeology:dirty_crushed_ore_bauxite",
+  "count": 1,
+  "loot-table": "mcoligrec:recipes/crusher/poorbauxitecrushing",
+  "research-id": "minecolonies:technology/gildedhammer"
+}

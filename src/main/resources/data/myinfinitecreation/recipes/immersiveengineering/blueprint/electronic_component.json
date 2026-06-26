@@ -1,0 +1,11 @@
+{
+  "type": "immersiveengineering:blueprint",
+  "category": "components",
+  "inputs": [
+    { "item": "wirelessredstone:circuit" },
+    { "item": "minecraft:redstone" },
+    { "item": "immersiveengineering:wire_copper" },
+    { "tag": "forge:treated_wood_slab" }
+  ],
+  "result": { "item": "immersiveengineering:component_electronic" }
+}

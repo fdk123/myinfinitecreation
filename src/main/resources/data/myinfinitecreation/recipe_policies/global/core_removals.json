@@ -47,7 +47,18 @@
     {
       "name": "CraftTweaker replacements - vanilla utility recipes",
       "id": [
-        "minecraft:hopper"
+        "minecraft:chest",
+        "minecraft:barrel",
+        "minecraft:hopper",
+        "minecraft:oak_chest_boat",
+        "minecraft:spruce_chest_boat",
+        "minecraft:birch_chest_boat",
+        "minecraft:jungle_chest_boat",
+        "minecraft:acacia_chest_boat",
+        "minecraft:dark_oak_chest_boat",
+        "minecraft:mangrove_chest_boat",
+        "minecraft:cherry_chest_boat",
+        "minecraft:bamboo_chest_raft"
       ]
     },
     {
@@ -55,7 +66,8 @@
       "id": [
         "farmersdelight:cooking_pot",
         "sophisticatedbackpacks:tool_swapper_upgrade",
-        "chipped:carpenters_table"
+        "chipped:carpenters_table",
+        "irons_spellbooks:graybeard_staff"
       ]
     },
     {
@@ -91,13 +103,46 @@
       ]
     },
     {
-      "name": "CraftTweaker MVP - selected progression outputs without replacements yet",
-      "output": [
-        "immersiveengineering:component_electronic",
-        "immersiveengineering:component_electronic_adv",
-        "ae2:inscriber",
-        "wirelessredstone:circuit"
+      "name": "CraftTweaker replacements - stage 3 Create recipes",
+      "id": [
+        "wirelessredstone:circuit",
+        "iammusicplayer:music_manager",
+        "iammusicplayer:cassette_deck"
       ]
+    },
+    {
+      "name": "CraftTweaker replacements - IE blast furnace steel",
+      "id": [
+        "immersiveengineering:blastfurnace/steel",
+        "immersiveengineering:blastfurnace/steel_block"
+      ]
+    },
+    {
+      "name": "CraftTweaker replacements - IE electronic components",
+      "id": [
+        "immersiveengineering:blueprint/component_electronic",
+        "immersiveengineering:blueprint/component_electronic_adv"
+      ]
+    },
+    {
+      "name": "CraftTweaker replacements - AE2 inscriber",
+      "id": "ae2:network/blocks/inscribers"
+    },
+    {
+      "name": "CraftTweaker replacements - centrifuge tiers",
+      "id": [
+        "centrifugetiersreproduced:compressium/high_end_centrifuge",
+        "centrifugetiersreproduced:compressium/nuclear_centrifuge",
+        "centrifugetiersreproduced:compressium/cosmic_centrifuge",
+        "centrifugetiersreproduced:allthecompressed/high_end_centrifuge",
+        "centrifugetiersreproduced:allthecompressed/nuclear_centrifuge",
+        "centrifugetiersreproduced:allthecompressed/cosmic_centrifuge"
+      ]
+    },
+    {
+      "name": "CraftTweaker removeByInput - IE arc furnace iron recipes",
+      "type": "immersiveengineering:arc_furnace",
+      "input": "minecraft:iron_ingot"
     }
   ]
 }

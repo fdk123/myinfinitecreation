@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "rules": [
+    {
+      "name": "Stage 9 - space and pneumatics",
+      "mode": "restrict",
+      "required_stage": "9",
+      "modids": [
+        "createaddition", "createnuclear", "create_new_age", "tinkers_advanced",
+        "pneumaticcraft", "compressedcreativity", "appliedpneumatics", "productivebees",
+        "ad_astra", "ad_astra_giselle_addon", "refurbished_furniture"
+      ],
+      "hide_in_jei": true, "mask_name": true, "allow_pickup": true,
+      "prevent_use": true, "prevent_place": true, "prevent_break_blocks": true
+    }
+  ]
+}

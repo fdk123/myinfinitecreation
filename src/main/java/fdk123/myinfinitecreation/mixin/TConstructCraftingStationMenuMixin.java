@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Pseudo
 @Mixin(targets = "slimeknights.tconstruct.tables.menu.CraftingStationContainerMenu", remap = false)
 public class TConstructCraftingStationMenuMixin {
-    @Inject(method = "quickMoveStack", at = @At("HEAD"), cancellable = true, remap = false)
+    @Inject(method = {"quickMoveStack", "m_7648_"}, at = @At("HEAD"), cancellable = true, remap = false, require = 0)
     private void myinfinitecreation$blockLockedCraftingStationShiftClick(
             Player player,
             int index,

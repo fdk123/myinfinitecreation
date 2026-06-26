@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "rules": [
+    {
+      "name": "Stage 7 - advanced engineering",
+      "mode": "restrict",
+      "required_stage": "7",
+      "modids": ["immersivetechnology", "tfmg", "totemfactory", "create_sa", "createrailwaysnavigator", "trafficcraft"],
+      "hide_in_jei": true, "mask_name": true, "allow_pickup": true,
+      "prevent_use": true, "prevent_place": true, "prevent_break_blocks": true
+    }
+  ]
+}

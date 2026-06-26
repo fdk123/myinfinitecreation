@@ -7,6 +7,7 @@
   "refmap": "myinfinitecreation.refmap.json",
   "mixins": [
     "CreateRecipeGridHandlerMixin",
+    "MineColoniesJeiJobCategoryMixin",
     "ResultSlotMixin",
     "TConstructCraftingStationMenuMixin"
   ],

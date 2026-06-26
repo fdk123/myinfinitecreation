@@ -8,6 +8,7 @@ out/
 .settings/
 .idea/
 .vscode/
+.codex_tmp/
 *.iml
 *.log
 hs_err_pid*

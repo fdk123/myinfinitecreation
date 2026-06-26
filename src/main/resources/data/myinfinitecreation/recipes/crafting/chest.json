@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "tag": "sophisticatedstorage:base_tier_wooden_storage"
+    }
+  ],
+  "result": {
+    "item": "minecraft:chest"
+  }
+}

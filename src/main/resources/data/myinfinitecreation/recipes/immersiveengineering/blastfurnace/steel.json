@@ -1,0 +1,13 @@
+{
+  "type": "immersiveengineering:blast_furnace",
+  "input": {
+    "base_ingredient": { "item": "minecraft:iron_ingot" },
+    "count": 3
+  },
+  "result": { "item": "immersiveengineering:ingot_steel" },
+  "slag": {
+    "base_ingredient": { "item": "immersiveengineering:slag" },
+    "count": 3
+  },
+  "time": 1200
+}

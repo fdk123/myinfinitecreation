@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "rules": [
+    {
+      "name": "Stage 5 - advanced transport",
+      "mode": "restrict",
+      "required_stage": "5",
+      "modids": ["bellsandwhistles", "man_of_many_planes", "immersive_machinery"],
+      "hide_in_jei": true, "mask_name": true, "allow_pickup": true,
+      "prevent_use": true, "prevent_place": true, "prevent_break_blocks": true
+    }
+  ]
+}

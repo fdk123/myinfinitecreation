@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": ["IAI", "PBP", "MCM"],
+  "key": {
+    "A": { "item": "appliedpneumatics:amadron_wireless_terminal" },
+    "B": { "item": "productivebees:powered_centrifuge" },
+    "C": { "item": "computercraft:computer_advanced" },
+    "I": { "item": "ae2:portable_item_cell_256k" },
+    "M": { "item": "appmek:portable_chemical_storage_cell_256k" },
+    "P": { "item": "appliedpneumatics:portable_air_cell_256k" }
+  },
+  "result": { "item": "centrifugetiersreproduced:high_end_centrifuge" }
+}

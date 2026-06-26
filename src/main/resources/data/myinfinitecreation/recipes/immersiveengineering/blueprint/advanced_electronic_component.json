@@ -1,0 +1,14 @@
+{
+  "type": "immersiveengineering:blueprint",
+  "category": "components",
+  "inputs": [
+    { "item": "wirelessredstone:circuit" },
+    {
+      "base_ingredient": { "item": "immersiveengineering:electron_tube" },
+      "count": 2
+    },
+    { "item": "immersiveengineering:wire_aluminum" },
+    { "item": "immersiveengineering:plate_duroplast" }
+  ],
+  "result": { "item": "immersiveengineering:component_electronic_adv" }
+}

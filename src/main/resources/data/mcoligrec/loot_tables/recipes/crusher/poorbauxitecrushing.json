@@ -1,0 +1,25 @@
+{
+  "pools": [
+    {
+      "bonus_rolls": 0.035,
+      "entries": [
+        {
+          "type": "minecraft:empty",
+          "weight": 72
+        },
+        {
+          "type": "minecraft:item",
+          "name": "immersivegeology:dirty_crushed_ore_bauxite",
+          "weight": 14
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:flint",
+          "weight": 14
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "minecolonies:recipes/crusher/poorbauxitecrushing"
+}

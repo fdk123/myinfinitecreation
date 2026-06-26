@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "rules": [
+    {
+      "name": "Stage 3 - Create entry recipes",
+      "required_stage": "3",
+      "type": "create:mechanical_crafting",
+      "outputs": [
+        "wirelessredstone:circuit",
+        "iammusicplayer:music_manager",
+        "iammusicplayer:cassette_deck"
+      ]
+    }
+  ]
+}

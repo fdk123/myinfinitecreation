@@ -1,0 +1,13 @@
+{
+  "type": "create:mechanical_crafting",
+  "acceptMirrored": false,
+  "pattern": ["GDG", "RSR", "PPP"],
+  "key": {
+    "D": { "item": "minecraft:glass_pane" },
+    "G": { "item": "minecraft:glowstone_dust" },
+    "P": { "item": "create:golden_sheet" },
+    "R": { "item": "minecraft:redstone" },
+    "S": { "item": "create_connected:sequenced_pulse_generator" }
+  },
+  "result": { "item": "wirelessredstone:circuit" }
+}

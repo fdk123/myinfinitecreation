@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": ["DRD", "AHA", "UEU"],
+  "key": {
+    "A": { "item": "mekanism:alloy_atomic" },
+    "D": { "item": "mekanismgenerators:deuterium_bucket" },
+    "E": { "item": "ad_extendra:uranium_engine" },
+    "H": { "item": "centrifugetiersreproduced:high_end_centrifuge" },
+    "R": { "item": "tfmg:rotor" },
+    "U": { "item": "thermal:upgrade_augment_3" }
+  },
+  "result": { "item": "centrifugetiersreproduced:nuclear_centrifuge" }
+}

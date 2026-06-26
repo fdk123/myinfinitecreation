@@ -122,6 +122,9 @@ public class ModGateService {
         if (!rule.items.isEmpty() && rule.items.contains(itemId)) {
             return true;
         }
+        if (ModGateRule.matchesLocationPattern(rule.itemPatterns, itemId)) {
+            return true;
+        }
         if (rule.modids.contains(itemId.getNamespace())) {
             return true;
         }
@@ -134,6 +137,9 @@ public class ModGateService {
             return false;
         }
         if (!rule.blocks.isEmpty() && rule.blocks.contains(blockId)) {
+            return true;
+        }
+        if (ModGateRule.matchesLocationPattern(rule.blockPatterns, blockId)) {
             return true;
         }
         if (rule.modids.contains(blockId.getNamespace())) {

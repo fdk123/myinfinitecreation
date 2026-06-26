@@ -2,6 +2,19 @@
   "replace": false,
   "rules": [
     {
+      "name": "Always show MineColonies blacksmith JEI catalyst",
+      "mode": "allow",
+      "items": [
+        "minecolonies:blockhutblacksmith"
+      ],
+      "hide_in_jei": false,
+      "mask_name": false,
+      "allow_pickup": true,
+      "prevent_use": true,
+      "prevent_place": true,
+      "prevent_break_blocks": true
+    },
+    {
       "name": "Stage 2 - MineColonies",
       "mode": "restrict",
       "modids": [

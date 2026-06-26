@@ -16,8 +16,10 @@ public class ClientProgressionHooks {
     private static List<ProgressionGateRule> recipeGateRules = List.of();
     private static List<ModGateRule> modGateRules = List.of();
     private static Set<ResourceLocation> completedMineColoniesResearches = Set.of();
+    private static String clientFallbackStage = "";
 
     public static void handleStageSync(String stage) {
+        clientFallbackStage = stage;
         StageAccess.setClientFallbackStage(stage);
         JeiProgressionPlugin.refreshRuntime();
     }
@@ -33,6 +35,9 @@ public class ClientProgressionHooks {
     }
 
     public static void handleMineColoniesResearchSync(Set<ResourceLocation> completedResearches) {
+        if (completedMineColoniesResearches.equals(completedResearches)) {
+            return;
+        }
         completedMineColoniesResearches = Set.copyOf(completedResearches);
         JeiProgressionPlugin.refreshRuntime();
     }
@@ -80,6 +85,9 @@ public class ClientProgressionHooks {
         if (!rule.items.isEmpty() && rule.items.contains(itemId)) {
             return true;
         }
+        if (ModGateRule.matchesLocationPattern(rule.itemPatterns, itemId)) {
+            return true;
+        }
         if (rule.modids.contains(itemId.getNamespace())) {
             return true;
         }
@@ -91,6 +99,9 @@ public class ClientProgressionHooks {
             return false;
         }
         if (!rule.items.isEmpty() && rule.items.contains(itemId)) {
+            return true;
+        }
+        if (ModGateRule.matchesLocationPattern(rule.itemPatterns, itemId)) {
             return true;
         }
         return rule.modids.contains(itemId.getNamespace());

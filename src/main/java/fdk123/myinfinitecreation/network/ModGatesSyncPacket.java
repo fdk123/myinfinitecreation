@@ -24,8 +24,10 @@ public record ModGatesSyncPacket(List<ModGateRule> rules) {
             writeResourceLocations(buffer, rule.requiredResearches);
             writeStrings(buffer, rule.modids);
             writeResourceLocations(buffer, rule.items);
+            writeStrings(buffer, rule.itemPatterns);
             writeResourceLocations(buffer, rule.itemTags);
             writeResourceLocations(buffer, rule.blocks);
+            writeStrings(buffer, rule.blockPatterns);
             writeResourceLocations(buffer, rule.blockTags);
             writeResourceLocations(buffer, rule.exceptItems);
             writeResourceLocations(buffer, rule.exceptBlocks);
@@ -49,8 +51,10 @@ public record ModGatesSyncPacket(List<ModGateRule> rules) {
             rule.requiredResearches.addAll(readResourceLocations(buffer));
             rule.modids.addAll(readStrings(buffer));
             rule.items.addAll(readResourceLocations(buffer));
+            rule.itemPatterns.addAll(readStrings(buffer));
             rule.itemTags.addAll(readResourceLocations(buffer));
             rule.blocks.addAll(readResourceLocations(buffer));
+            rule.blockPatterns.addAll(readStrings(buffer));
             rule.blockTags.addAll(readResourceLocations(buffer));
             rule.exceptItems.addAll(readResourceLocations(buffer));
             rule.exceptBlocks.addAll(readResourceLocations(buffer));

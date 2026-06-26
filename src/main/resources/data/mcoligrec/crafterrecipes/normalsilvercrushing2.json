@@ -1,0 +1,20 @@
+{
+  "type": "recipe",
+  "crafter": "crusher_custom",
+  "inputs": [
+    {
+      "count": 1,
+      "item": "immersivegeology:normal_ore_silver"
+    }
+  ],
+  "intermediate": "minecraft:air",
+  "result": "immersivegeology:dirty_crushed_ore_silver",
+  "additional-output": [
+    {
+      "item": "immersivegeology:poor_ore_silver",
+      "count": 1
+    }
+  ],
+  "loot-table": "mcoligrec:recipes/crusher/normalsilvercrushing",
+  "research-id": "minecolonies:technology/gildedhammer"
+}

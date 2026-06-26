@@ -1,0 +1,18 @@
+{
+  "replace": false,
+  "rules": [
+    {
+      "name": "Stage 8 - digital storage and computers",
+      "mode": "restrict",
+      "required_stage": "8",
+      "modids": [
+        "numismatics", "computercraft", "cccbridge", "cc_recrafted", "cctvcraft",
+        "ae2insertexportcard", "appwebterminal", "appflux", "aeinfinitybooster", "ae2",
+        "mae2", "ae2wtlib", "more_immersive_wires", "ae2netanalyser",
+        "createappliedkinetics", "schematicenergistics"
+      ],
+      "hide_in_jei": true, "mask_name": true, "allow_pickup": true,
+      "prevent_use": true, "prevent_place": true, "prevent_break_blocks": true
+    }
+  ]
+}

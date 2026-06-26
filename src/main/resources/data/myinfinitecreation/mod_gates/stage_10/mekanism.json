@@ -1,0 +1,16 @@
+{
+  "replace": false,
+  "rules": [
+    {
+      "name": "Stage 10 - Mekanism family",
+      "mode": "restrict",
+      "required_stage": "10",
+      "modids": [
+        "mekanism", "mekanismgenerators", "mekanismadditions", "moremekanismprocessing",
+        "mekanismexplosives", "appmek", "ad_extendra"
+      ],
+      "hide_in_jei": true, "mask_name": true, "allow_pickup": true,
+      "prevent_use": true, "prevent_place": true, "prevent_break_blocks": true
+    }
+  ]
+}

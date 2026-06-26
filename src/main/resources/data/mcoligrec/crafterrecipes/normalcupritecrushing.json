@@ -1,0 +1,15 @@
+{
+  "type": "recipe",
+  "crafter": "crusher_custom",
+  "inputs": [
+    {
+      "count": 1,
+      "item": "immersivegeology:normal_ore_cuprite"
+    }
+  ],
+  "intermediate": "minecraft:air",
+  "result": "immersivegeology:dirty_crushed_ore_cuprite",
+  "loot-table": "mcoligrec:recipes/crusher/normalcupritecrushing",
+  "research-id": "minecolonies:technology/rockingroll",
+  "not-research-id": "minecolonies:technology/gildedhammer"
+}

@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "rules": [
+    {
+      "name": "Stage 8 - AE2 inscriber",
+      "required_stage": "8",
+      "type": "minecraft:crafting",
+      "output": "ae2:inscriber"
+    }
+  ]
+}

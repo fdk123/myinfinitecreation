@@ -1,0 +1,25 @@
+{
+  "pools": [
+    {
+      "bonus_rolls": 0.035,
+      "entries": [
+        {
+          "type": "minecraft:empty",
+          "weight": 58
+        },
+        {
+          "type": "minecraft:item",
+          "name": "immersivegeology:dirty_crushed_ore_magnetite",
+          "weight": 36
+        },
+        {
+          "type": "minecraft:item",
+          "name": "immersivegeology:poor_ore_magnetite",
+          "weight": 6
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "minecolonies:recipes/crusher/normalmagnetitecrushing"
+}

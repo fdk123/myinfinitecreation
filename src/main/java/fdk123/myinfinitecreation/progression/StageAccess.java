@@ -6,7 +6,9 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 
 import java.util.Collection;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 import java.lang.reflect.Method;
 
 public class StageAccess {
@@ -25,13 +27,18 @@ public class StageAccess {
 
     public boolean hasStage(Player player, String stage) {
         initialize();
-        if (hasTeamStage(player, stage)) {
-            return true;
+        for (String alias : stageAliases(stage)) {
+            if (hasTeamStage(player, alias)) {
+                return true;
+            }
+            if (hasGameStage(player, alias)) {
+                return true;
+            }
+            if (hasWorldStage(player, alias)) {
+                return true;
+            }
         }
-        if (hasGameStage(player, stage)) {
-            return true;
-        }
-        return hasWorldStage(player, stage);
+        return false;
     }
 
     public boolean addStage(ServerPlayer player, String stage) {
@@ -226,9 +233,20 @@ public class StageAccess {
     private boolean hasWorldStage(Player player, String stage) {
         MinecraftServer server = player.level().getServer();
         if (server == null) {
-            return clientFallbackStage.equals(stage) || clientFallbackStage.equals("stage_" + stage);
+            return clientFallbackStage.equals(stage);
         }
         String activeStage = RecipeStageState.get(server).getActiveStage();
-        return activeStage.equals(stage) || activeStage.equals("stage_" + stage);
+        return activeStage.equals(stage);
+    }
+
+    private Set<String> stageAliases(String stage) {
+        Set<String> aliases = new LinkedHashSet<>();
+        aliases.add(stage);
+        if (stage.startsWith("stage_")) {
+            aliases.add(stage.substring("stage_".length()));
+        } else {
+            aliases.add("stage_" + stage);
+        }
+        return aliases;
     }
 }

@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "rules": [
+    {
+      "name": "Stage 3 - Create family",
+      "mode": "restrict",
+      "required_stage": "3",
+      "modids": [
+        "create", "create_connected", "create_enchantment_industry", "create_power_loader",
+        "create_things_and_misc", "create_stats", "create_currency_shops", "wirelessredstone",
+        "iammusicplayer", "createdeco", "copycats"
+      ],
+      "hide_in_jei": true,
+      "mask_name": true,
+      "allow_pickup": true,
+      "prevent_use": true,
+      "prevent_place": true,
+      "prevent_break_blocks": true
+    }
+  ]
+}

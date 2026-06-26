@@ -1,0 +1,30 @@
+{
+  "pools": [
+    {
+      "bonus_rolls": 0.035,
+      "entries": [
+        {
+          "type": "minecraft:empty",
+          "weight": 54
+        },
+        {
+          "type": "minecraft:item",
+          "name": "immersivegeology:dirty_crushed_ore_alumina",
+          "weight": 36
+        },
+        {
+          "type": "minecraft:item",
+          "name": "immersivegeology:dirty_crushed_ore_alumina",
+          "weight": 6
+        },
+        {
+          "type": "minecraft:item",
+          "name": "immersivegeology:poor_ore_alumina",
+          "weight": 14
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "minecolonies:recipes/crusher/richaluminacrushing"
+}

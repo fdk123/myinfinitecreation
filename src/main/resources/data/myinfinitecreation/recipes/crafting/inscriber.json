@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": ["SPC", "F S", "SPC"],
+  "key": {
+    "C": { "tag": "forge:plates/copper" },
+    "F": { "item": "ae2:fluix_crystal" },
+    "P": { "item": "minecraft:sticky_piston" },
+    "S": { "tag": "forge:plates/steel" }
+  },
+  "result": { "item": "ae2:inscriber" }
+}

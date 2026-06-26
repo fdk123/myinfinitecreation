@@ -1,0 +1,15 @@
+{
+  "type": "create:mechanical_crafting",
+  "acceptMirrored": false,
+  "pattern": ["CNC", "BJW", "PIP"],
+  "key": {
+    "B": { "tag": "minecraft:buttons" },
+    "C": { "item": "create:cogwheel" },
+    "I": { "tag": "forge:ingots/copper" },
+    "J": { "item": "minecraft:jukebox" },
+    "N": { "item": "minecraft:note_block" },
+    "P": { "tag": "forge:plates/iron" },
+    "W": { "item": "wirelessredstone:circuit" }
+  },
+  "result": { "item": "iammusicplayer:cassette_deck" }
+}

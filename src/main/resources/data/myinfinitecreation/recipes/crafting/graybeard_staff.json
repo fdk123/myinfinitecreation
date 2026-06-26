@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "  E",
+    " R ",
+    "I  "
+  ],
+  "key": {
+    "E": { "item": "irons_spellbooks:arcane_essence" },
+    "I": { "item": "minecraft:iron_ingot" },
+    "R": { "tag": "forge:rods/wooden" }
+  },
+  "result": { "item": "irons_spellbooks:graybeard_staff" }
+}

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "transportation",
+  "pattern": [
+    "AB",
+    "S "
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:mangrove_boat"
+    },
+    "B": {
+      "tag": "sophisticatedstorage:base_tier_wooden_storage"
+    },
+    "S": {
+      "tag": "forge:string"
+    }
+  },
+  "result": {
+    "item": "minecraft:mangrove_chest_boat"
+  }
+}

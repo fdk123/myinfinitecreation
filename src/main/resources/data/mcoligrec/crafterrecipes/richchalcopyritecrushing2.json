@@ -1,0 +1,21 @@
+{
+  "type": "recipe",
+  "crafter": "crusher_custom",
+  "inputs": [
+    {
+      "count": 2,
+      "item": "immersivegeology:rich_ore_chalcopyrite"
+    }
+  ],
+  "intermediate": "minecraft:air",
+  "result": "immersivegeology:dirty_crushed_ore_chalcopyrite",
+  "count": 3,
+  "additional-output": [
+    {
+      "item": "immersivegeology:poor_ore_chalcopyrite",
+      "count": 1
+    }
+  ],
+  "loot-table": "mcoligrec:recipes/crusher/richchalcopyritecrushing",
+  "research-id": "minecolonies:technology/gildedhammer"
+}

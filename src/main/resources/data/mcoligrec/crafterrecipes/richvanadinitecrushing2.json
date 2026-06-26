@@ -1,0 +1,21 @@
+{
+  "type": "recipe",
+  "crafter": "crusher_custom",
+  "inputs": [
+    {
+      "count": 2,
+      "item": "immersivegeology:rich_ore_vanadinite"
+    }
+  ],
+  "intermediate": "minecraft:air",
+  "result": "immersivegeology:dirty_crushed_ore_vanadinite",
+  "count": 3,
+  "additional-output": [
+    {
+      "item": "immersivegeology:poor_ore_vanadinite",
+      "count": 1
+    }
+  ],
+  "loot-table": "mcoligrec:recipes/crusher/richvanadinitecrushing",
+  "research-id": "minecolonies:technology/gildedhammer"
+}

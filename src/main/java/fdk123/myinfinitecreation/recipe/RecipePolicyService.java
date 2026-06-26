@@ -12,6 +12,7 @@ import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.item.crafting.RecipeType;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class RecipePolicyService {
@@ -115,7 +116,9 @@ public class RecipePolicyService {
                     && matches(rule.namespaces, id.getNamespace())
                     && matches(rule.types, type)
                     && matches(rule.outputs, output)
-                    && matchesOutputTags(rule.outputTags, result)) {
+                    && matchesOutputTags(rule.outputTags, result)
+                    && matchesInputs(rule, recipe)
+                    && !isExcluded(rule, id, type, output)) {
                 return rule;
             }
         }
@@ -153,6 +156,24 @@ public class RecipePolicyService {
             return false;
         }
         return ruleTags.stream().anyMatch(tag -> result.is(TagKey.create(BuiltInRegistries.ITEM.key(), tag)));
+    }
+
+    private boolean matchesInputs(RecipePolicyRule rule, Recipe<?> recipe) {
+        boolean itemsMatch = rule.inputs.isEmpty() || recipe.getIngredients().stream()
+                .flatMap(ingredient -> Arrays.stream(ingredient.getItems()))
+                .map(this::resultId)
+                .anyMatch(rule.inputs::contains);
+        boolean tagsMatch = rule.inputTags.isEmpty() || recipe.getIngredients().stream()
+                .flatMap(ingredient -> Arrays.stream(ingredient.getItems()))
+                .anyMatch(stack -> rule.inputTags.stream()
+                        .anyMatch(tag -> stack.is(TagKey.create(BuiltInRegistries.ITEM.key(), tag))));
+        return itemsMatch && tagsMatch;
+    }
+
+    private boolean isExcluded(RecipePolicyRule rule, ResourceLocation id, ResourceLocation type, ResourceLocation output) {
+        return rule.exceptIds.contains(id)
+                || rule.exceptTypes.contains(type)
+                || output != null && rule.exceptOutputs.contains(output);
     }
 
     private record RemovedRecipe(ResourceLocation id, ResourceLocation type, ResourceLocation output, String ruleName) {

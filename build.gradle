@@ -92,6 +92,86 @@ mixin {
     config "${mod_id}.mixins.json"
 }
 
+def referenceModsDir = file('../references/mods')
+def disabledReferenceModsFile = file('dev-disabled-mods.txt')
+def enabledExtraModsFile = file('dev-enabled-extra-mods.txt')
+
+def disabledReferenceMods = [] as Set
+if (disabledReferenceModsFile.exists()) {
+    disabledReferenceModsFile.eachLine { line ->
+        def trimmed = line.trim()
+        if (trimmed && !trimmed.startsWith('#')) {
+            disabledReferenceMods.add(trimmed)
+        }
+    }
+}
+
+def enabledExtraMods = [] as Set
+if (enabledExtraModsFile.exists()) {
+    enabledExtraModsFile.eachLine { line ->
+        def trimmed = line.trim()
+        if (trimmed && !trimmed.startsWith('#')) {
+            enabledExtraMods.add(trimmed)
+        }
+    }
+}
+
+def devModProfile = providers.gradleProperty('devModProfile').getOrElse('full')
+if (!['full', 'core', 'selected'].contains(devModProfile)) {
+    throw new GradleException("Unknown devModProfile '${devModProfile}'. Use full, core, or selected.")
+}
+
+def deobfReferenceModNames = [
+        'jei-1.20.1-forge-15.20.0.130.jar',
+        'almostunified-forge-1.20.1-0.11.0.jar',
+        'unifyeverything-1.20.1-1.0.2.9.jar',
+        'GameStages-Forge-1.20.1-15.0.2.jar',
+        'teamstages-1.20.1-1.2.0.jar',
+        'architectury-9.2.14-forge.jar',
+        'Bookshelf-Forge-1.20.1-20.2.15.jar',
+        'FarmersDelight-1.20.1-1.3.2.jar',
+        'athena-forge-1.20.1-3.1.2.jar',
+        'resourcefulconfig-forge-1.20.1-2.1.3.jar',
+        'resourcefullib-forge-1.20.1-2.1.29.jar',
+        'chipped-forge-1.20.1-3.0.7.jar',
+        'NaturesCompass-1.20.1-1.12.0-forge.jar',
+        'ExplorersCompass-1.20.1-1.4.0-forge.jar',
+        'sophisticatedcore-1.20.1-1.3.49.1999.jar',
+        'sophisticatedstorage-1.20.1-1.4.54.1827.jar',
+        'sophisticatedbackpacks-1.20.1-3.24.52.1869.jar',
+        'Mantle-1.20.1-1.11.104.jar',
+        'TConstruct-1.20.1-3.11.2.166.jar',
+        'ftb-library-forge-2001.2.13.jar',
+        'ftb-teams-forge-2001.3.2.jar',
+        'create-1.20.1-6.0.8.jar',
+        'blockui-1.20.1-1.0.193.jar',
+        'structurize-1.20.1-1.0.816.jar',
+        'domum_ornamentum-1.20.1-1.0.296-universal.jar',
+        'multipiston-1.20-1.2.43-RELEASE.jar',
+        'minecolonies-1.20.1-1.1.1231.jar',
+        'ImmersiveEngineering-1.20.1-10.2.0-183.jar',
+        'ImmersivePetroleum-1.20.1-4.3.1-36.jar'
+] as Set
+
+def activeExtraModNames = [] as Set
+if (referenceModsDir.exists()) {
+    def availableReferenceModNames = referenceModsDir.listFiles({ file -> file.name.endsWith('.jar') } as FileFilter)
+            .collect { it.name } as Set
+    if (devModProfile == 'full') {
+        activeExtraModNames.addAll(availableReferenceModNames)
+    } else if (devModProfile == 'selected') {
+        activeExtraModNames.addAll(enabledExtraMods)
+    }
+    activeExtraModNames.removeAll(disabledReferenceMods)
+    activeExtraModNames.removeAll(deobfReferenceModNames)
+}
+
+def referenceRuntimeMods = referenceModsDir.exists()
+        ? referenceModsDir.listFiles({ file -> file.name.endsWith('.jar') } as FileFilter)
+                .findAll { file -> activeExtraModNames.contains(file.name) }
+                .sort { a, b -> a.name <=> b.name }
+        : []
+
 repositories {
     flatDir {
         dirs '../references/mods'
@@ -118,9 +198,9 @@ dependencies {
     runtimeOnly fg.deobf("local:chipped-forge-1.20.1:3.0.7")
     runtimeOnly fg.deobf("local:NaturesCompass-1.20.1:1.12.0-forge")
     runtimeOnly fg.deobf("local:ExplorersCompass-1.20.1:1.4.0-forge")
-    runtimeOnly fg.deobf("local:sophisticatedcore-1.20.1:1.3.47.1995")
+    runtimeOnly fg.deobf("local:sophisticatedcore-1.20.1:1.3.49.1999")
     runtimeOnly fg.deobf("local:sophisticatedstorage-1.20.1:1.4.54.1827")
-    runtimeOnly fg.deobf("local:sophisticatedbackpacks-1.20.1:3.24.51.1864")
+    runtimeOnly fg.deobf("local:sophisticatedbackpacks-1.20.1:3.24.52.1869")
     runtimeOnly fg.deobf("local:Mantle-1.20.1:1.11.104")
     runtimeOnly fg.deobf("local:TConstruct-1.20.1:3.11.2.166")
     runtimeOnly fg.deobf("local:ftb-library-forge:2001.2.13")
@@ -133,6 +213,43 @@ dependencies {
     runtimeOnly fg.deobf("local:minecolonies-1.20.1:1.1.1231")
     runtimeOnly fg.deobf("local:ImmersiveEngineering-1.20.1-10.2.0:183")
     runtimeOnly fg.deobf("local:ImmersivePetroleum-1.20.1-4.3.1:36")
+}
+
+tasks.register('syncReferenceModsToRunMods') {
+    group = 'minecraft'
+    description = 'Copies non-deobf reference mod jars into run/mods for dev client testing.'
+
+    inputs.file disabledReferenceModsFile
+    inputs.file enabledExtraModsFile
+    inputs.property 'devModProfile', devModProfile
+    outputs.upToDateWhen { false }
+
+    doLast {
+        def runModsDir = file('run/mods')
+        runModsDir.mkdirs()
+        if (referenceModsDir.exists()) {
+            def referenceJarNames = referenceModsDir.listFiles({ file -> file.name.endsWith('.jar') } as FileFilter)
+                    .collect { it.name } as Set
+            runModsDir.listFiles({ file -> file.name.endsWith('.jar') } as FileFilter)?.each { existing ->
+                if (referenceJarNames.contains(existing.name)
+                        && (!activeExtraModNames.contains(existing.name)
+                        || disabledReferenceMods.contains(existing.name)
+                        || deobfReferenceModNames.contains(existing.name))) {
+                    existing.delete()
+                }
+            }
+        }
+        copy {
+            from referenceRuntimeMods
+            into runModsDir
+        }
+    }
+}
+
+tasks.configureEach {
+    if (name == 'runClient') {
+        dependsOn tasks.named('syncReferenceModsToRunMods')
+    }
 }
 
 tasks.named('processResources', ProcessResources).configure {

@@ -13,8 +13,14 @@ Current rule matchers:
 - `type`: recipe type id, for example `minecraft:crafting` or `immersiveengineering:blast_furnace`
 - `output`: recipe result item id, for example `minecraft:wooden_pickaxe`
 - `output_tag`: recipe result item tag, for example `forge:ingots/steel`
+- `input` / `inputs`: recipe ingredient item id; useful for CraftTweaker-style `removeByInput`
+- `input_tag` / `input_tags`: recipe ingredient item tag
+- `except_id` / `except_ids`: recipe ids that must survive an otherwise matching rule
+- `except_type` / `except_types`: recipe types that must survive an otherwise matching rule
+- `except_output` / `except_outputs`: result items that must survive an otherwise matching rule
 
 Multiple values inside one matcher are OR. Multiple matchers in one rule are AND. For example, a rule with both `type` and `output` only removes recipes matching both fields.
+Exclusion fields are checked last and win over positive matchers.
 
 Rules are applied after server recipes are loaded and log every removed recipe.
 
@@ -101,8 +107,10 @@ Current mod gate matchers:
 
 - `modid` / `modids`: item or block namespace, for example `create`
 - `item` / `items`: exact item ids
+- `item_pattern` / `item_patterns`: item id glob patterns, for example `thermal:rubberwood_*`
 - `item_tag` / `item_tags`: item tags
 - `block` / `blocks`: exact block ids
+- `block_pattern` / `block_patterns`: block id glob patterns, for example `prehistoricfauna:agathoxylon_*`
 - `block_tag` / `block_tags`: block tags, useful for ores
 - `except_item` / `except_items`: item exceptions
 - `except_block` / `except_blocks`: block exceptions

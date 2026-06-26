@@ -1,0 +1,15 @@
+{
+  "type": "recipe",
+  "crafter": "crusher_custom",
+  "inputs": [
+    {
+      "count": 2,
+      "item": "immersivegeology:poor_ore_sphalerite"
+    }
+  ],
+  "intermediate": "minecraft:air",
+  "result": "immersivegeology:dirty_crushed_ore_sphalerite",
+  "count": 1,
+  "loot-table": "mcoligrec:recipes/crusher/poorsphaleritecrushing",
+  "research-id": "minecolonies:technology/gildedhammer"
+}

@@ -1,0 +1,15 @@
+{
+  "type": "recipe",
+  "crafter": "crusher_custom",
+  "inputs": [
+    {
+      "count": 1,
+      "item": "immersivegeology:normal_ore_vanadinite"
+    }
+  ],
+  "intermediate": "minecraft:air",
+  "result": "immersivegeology:dirty_crushed_ore_vanadinite",
+  "loot-table": "mcoligrec:recipes/crusher/normalvanadinitecrushing",
+  "research-id": "minecolonies:technology/rockingroll",
+  "not-research-id": "minecolonies:technology/gildedhammer"
+}

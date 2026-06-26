@@ -1,0 +1,10 @@
+# Optional production jars used by the selected dev profile.
+# Run it with: gradlew runClient -PdevModProfile=selected
+# Add one exact jar filename per line, together with any required dependencies.
+#
+# The core development stack (JEI, Create, TConstruct, MineColonies,
+# Immersive Engineering, TeamStages, and their libraries) is already loaded
+# through ForgeGradle deobf dependencies in build.gradle.
+#
+# The default profile is full and loads every reference jar except entries in
+# dev-disabled-mods.txt. Use -PdevModProfile=core for only the deobf stack.

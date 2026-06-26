@@ -1,0 +1,27 @@
+{
+  "replace": false,
+  "rules": [
+    {
+      "name": "Stage 4 - steam transport mods",
+      "mode": "restrict",
+      "required_stage": "4",
+      "modids": ["steampowered", "railways", "immersive_aircraft"],
+      "hide_in_jei": true, "mask_name": true, "allow_pickup": true,
+      "prevent_use": true, "prevent_place": true, "prevent_break_blocks": true
+    },
+    {
+      "name": "Stage 4 - MTS locomotive parts",
+      "mode": "restrict",
+      "required_stage": "4",
+      "items": [
+        "mts:automotives.boilerbox", "mts:automotives.upgrade_airhorn", "mts:automotives.upgrade_cab",
+        "mts:automotives.upgrade_cakeloader", "mts:automotives.upgrade_cowcatcher",
+        "mts:automotives.upgrade_fuel", "mts:automotives.upgrade_nitro",
+        "mts:automotives.upgrade_storage", "mts:automotives.upgrade_turbo",
+        "mts:automotives.bullet_cakecapsule"
+      ],
+      "hide_in_jei": true, "mask_name": true, "allow_pickup": true,
+      "prevent_use": true, "prevent_place": true, "prevent_break_blocks": true
+    }
+  ]
+}

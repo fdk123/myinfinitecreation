@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": ["ASA", "CTC", "NQN"],
+  "key": {
+    "A": { "item": "tinkers_advanced:anti_neutronium_ingot" },
+    "C": { "item": "tinkers_advanced:activated_chromatic_steel" },
+    "N": { "item": "tinkers_advanced:neutronite_ingot" },
+    "Q": { "item": "ae2:quantum_entangled_singularity" },
+    "S": { "item": "ae2:singularity" },
+    "T": { "item": "centrifugetiersreproduced:nuclear_centrifuge" }
+  },
+  "result": { "item": "centrifugetiersreproduced:cosmic_centrifuge" }
+}

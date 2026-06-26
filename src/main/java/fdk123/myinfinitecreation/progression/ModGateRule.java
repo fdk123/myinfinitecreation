@@ -18,8 +18,10 @@ public class ModGateRule {
     public Set<ResourceLocation> requiredResearches = new LinkedHashSet<>();
     public Set<String> modids = new LinkedHashSet<>();
     public Set<ResourceLocation> items = new LinkedHashSet<>();
+    public Set<String> itemPatterns = new LinkedHashSet<>();
     public Set<ResourceLocation> itemTags = new LinkedHashSet<>();
     public Set<ResourceLocation> blocks = new LinkedHashSet<>();
+    public Set<String> blockPatterns = new LinkedHashSet<>();
     public Set<ResourceLocation> blockTags = new LinkedHashSet<>();
     public Set<ResourceLocation> exceptItems = new LinkedHashSet<>();
     public Set<ResourceLocation> exceptBlocks = new LinkedHashSet<>();
@@ -49,10 +51,14 @@ public class ModGateRule {
         readStrings(object, "modids", rule.modids);
         readResourceLocations(object, "item", rule.items);
         readResourceLocations(object, "items", rule.items);
+        readStrings(object, "item_pattern", rule.itemPatterns);
+        readStrings(object, "item_patterns", rule.itemPatterns);
         readResourceLocations(object, "item_tag", rule.itemTags);
         readResourceLocations(object, "item_tags", rule.itemTags);
         readResourceLocations(object, "block", rule.blocks);
         readResourceLocations(object, "blocks", rule.blocks);
+        readStrings(object, "block_pattern", rule.blockPatterns);
+        readStrings(object, "block_patterns", rule.blockPatterns);
         readResourceLocations(object, "block_tag", rule.blockTags);
         readResourceLocations(object, "block_tags", rule.blockTags);
         readResourceLocations(object, "except_item", rule.exceptItems);
@@ -69,11 +75,25 @@ public class ModGateRule {
     }
 
     public boolean isEmpty() {
-        boolean hasNoTargets = modids.isEmpty() && items.isEmpty() && itemTags.isEmpty() && blocks.isEmpty() && blockTags.isEmpty();
+        boolean hasNoTargets = modids.isEmpty()
+                && items.isEmpty()
+                && itemPatterns.isEmpty()
+                && itemTags.isEmpty()
+                && blocks.isEmpty()
+                && blockPatterns.isEmpty()
+                && blockTags.isEmpty();
         if (hasNoTargets) {
             return true;
         }
         return isRestrict() && requiredStages.isEmpty() && requiredResearches.isEmpty();
+    }
+
+    public static boolean matchesLocationPattern(Set<String> patterns, ResourceLocation location) {
+        if (location == null || patterns.isEmpty()) {
+            return false;
+        }
+        String value = location.toString();
+        return patterns.stream().anyMatch(pattern -> wildcardMatches(pattern, value));
     }
 
     public boolean isAllow() {
@@ -119,5 +139,35 @@ public class ModGateRule {
             values.add(element.getAsString());
         }
         return values;
+    }
+
+    private static boolean wildcardMatches(String pattern, String value) {
+        int patternIndex = 0;
+        int valueIndex = 0;
+        int starIndex = -1;
+        int matchIndex = 0;
+
+        while (valueIndex < value.length()) {
+            if (patternIndex < pattern.length()
+                    && (pattern.charAt(patternIndex) == '?' || pattern.charAt(patternIndex) == value.charAt(valueIndex))) {
+                patternIndex++;
+                valueIndex++;
+            } else if (patternIndex < pattern.length() && pattern.charAt(patternIndex) == '*') {
+                starIndex = patternIndex;
+                matchIndex = valueIndex;
+                patternIndex++;
+            } else if (starIndex != -1) {
+                patternIndex = starIndex + 1;
+                matchIndex++;
+                valueIndex = matchIndex;
+            } else {
+                return false;
+            }
+        }
+
+        while (patternIndex < pattern.length() && pattern.charAt(patternIndex) == '*') {
+            patternIndex++;
+        }
+        return patternIndex == pattern.length();
     }
 }
