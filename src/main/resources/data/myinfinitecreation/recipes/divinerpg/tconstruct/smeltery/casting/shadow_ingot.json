@@ -1,0 +1,22 @@
+{
+  "type": "tconstruct:casting_table",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "divinerpg"
+    }
+  ],
+  "fluid": {
+    "fluid": "myinfinitecreation:molten_shadow_stone",
+    "amount": 23
+  },
+  "result": "divinerpg:shadow_bar",
+  "cooling_time": 85,
+  "cast": {
+    "tag": "tconstruct:casts/multi_use/ingot"
+  }
+}

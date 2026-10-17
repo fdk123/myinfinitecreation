@@ -1,0 +1,9 @@
+{
+  "values": [
+    "divinerpg:realmite_helmet",
+    "divinerpg:realmite_chestplate",
+    "divinerpg:realmite_leggings",
+    "divinerpg:realmite_boots"
+  ],
+  "replace": false
+}

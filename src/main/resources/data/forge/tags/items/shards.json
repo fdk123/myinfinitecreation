@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:shards/arlemite",
+    "#forge:shards/realmite",
+    "#forge:shards/rupee",
+    "#forge:shards/torridite"
+  ]
+}

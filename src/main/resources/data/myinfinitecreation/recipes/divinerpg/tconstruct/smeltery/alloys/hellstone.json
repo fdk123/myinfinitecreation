@@ -1,0 +1,28 @@
+{
+  "type": "tconstruct:alloy",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "divinerpg"
+    }
+  ],
+  "inputs": [
+    {
+      "fluid": "myinfinitecreation:molten_torridite",
+      "amount": 405
+    },
+    {
+      "fluid": "myinfinitecreation:molten_shadow_stone",
+      "amount": 45
+    }
+  ],
+  "result": {
+    "fluid": "myinfinitecreation:molten_hellstone",
+    "amount": 90
+  },
+  "temperature": 1250
+}

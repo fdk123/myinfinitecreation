@@ -1,0 +1,22 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "divinerpg"
+    }
+  ],
+  "ingredient": {
+    "item": "divinerpg:skythern_chunk"
+  },
+  "result": {
+    "fluid": "myinfinitecreation:molten_skythern_chunk",
+    "amount": 90
+  },
+  "temperature": 1650,
+  "time": 100
+}

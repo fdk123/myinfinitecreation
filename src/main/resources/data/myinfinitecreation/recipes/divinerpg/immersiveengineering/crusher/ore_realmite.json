@@ -1,0 +1,24 @@
+{
+  "type": "immersiveengineering:crusher",
+  "energy": 6000,
+  "input": {
+    "tag": "forge:ores/blocks/realmite"
+  },
+  "result": {
+    "base_ingredient": {
+      "item": "myinfinitecreation:realmite_dust"
+    },
+    "count": 2
+  },
+  "secondaries": [],
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "divinerpg"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "immersiveengineering"
+    }
+  ]
+}

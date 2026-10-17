@@ -1,0 +1,22 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "divinerpg"
+    }
+  ],
+  "ingredient": {
+    "item": "divinerpg:jungle_stone"
+  },
+  "result": {
+    "fluid": "myinfinitecreation:molten_jungle_stone",
+    "amount": 90
+  },
+  "temperature": 850,
+  "time": 100
+}

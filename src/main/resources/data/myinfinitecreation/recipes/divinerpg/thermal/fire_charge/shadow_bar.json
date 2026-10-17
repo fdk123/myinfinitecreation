@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    [
+      {
+        "tag": "forge:dusts/arlemite"
+      },
+      {
+        "tag": "forge:ingots/arlemite"
+      }
+    ],
+    [
+      {
+        "tag": "forge:dusts/rupee"
+      },
+      {
+        "tag": "forge:ingots/rupee"
+      }
+    ],
+    {
+      "item": "minecraft:fire_charge"
+    }
+  ],
+  "result": {
+    "item": "divinerpg:shadow_bar"
+  },
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "divinerpg"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "thermal"
+    }
+  ]
+}

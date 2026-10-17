@@ -1,0 +1,22 @@
+{
+  "type": "tconstruct:casting_table",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "divinerpg"
+    }
+  ],
+  "fluid": {
+    "fluid": "myinfinitecreation:molten_red_diamond",
+    "amount": 90
+  },
+  "result": "divinerpg:red_diamond_chunk",
+  "cooling_time": 85,
+  "cast": {
+    "tag": "tconstruct:casts/multi_use/gem"
+  }
+}

@@ -1,6 +1,9 @@
 package fdk123.myinfinitecreation;
 
 import fdk123.myinfinitecreation.command.MicCommands;
+import fdk123.myinfinitecreation.divinerpg.DivineProcessingItems;
+import fdk123.myinfinitecreation.divinerpg.DivineMoltenFluids;
+import fdk123.myinfinitecreation.divinerpg.DivineCompatModifiers;
 import fdk123.myinfinitecreation.network.MicNetwork;
 import fdk123.myinfinitecreation.progression.ModGateService;
 import fdk123.myinfinitecreation.progression.ProgressionGateService;
@@ -8,6 +11,7 @@ import fdk123.myinfinitecreation.progression.ResearchStageUnlockService;
 import fdk123.myinfinitecreation.recipe.ModRecipeSerializers;
 import fdk123.myinfinitecreation.recipe.RecipePolicyService;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.OnDatapackSyncEvent;
@@ -16,6 +20,7 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.server.ServerStartedEvent;
 import net.minecraftforge.event.server.ServerStoppingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -23,6 +28,10 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import net.minecraft.world.item.ItemStack;
+import slimeknights.tconstruct.library.modifiers.ModifierId;
+import slimeknights.tconstruct.library.tools.item.IModifiable;
+import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
 @Mod(MyInfiniteCreation.MOD_ID)
 public class MyInfiniteCreation {
@@ -37,6 +46,9 @@ public class MyInfiniteCreation {
     private int researchSyncTick = 0;
 
     public MyInfiniteCreation() {
+        DivineProcessingItems.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
+        DivineMoltenFluids.register(FMLJavaModLoadingContext.get().getModEventBus());
+        DivineCompatModifiers.register(FMLJavaModLoadingContext.get().getModEventBus());
         ModRecipeSerializers.RECIPE_SERIALIZERS.register(FMLJavaModLoadingContext.get().getModEventBus());
         MicNetwork.register();
         MinecraftForge.EVENT_BUS.register(this);
@@ -125,6 +137,40 @@ public class MyInfiniteCreation {
         PROGRESSION_GATES.clear();
         MOD_GATES.clear();
         RESEARCH_STAGE_UNLOCKS.clear();
+    }
+
+    @SubscribeEvent
+    public void onLivingDeath(LivingDeathEvent event) {
+        if (event.getEntity().level().isClientSide || !(event.getEntity() instanceof Player player)) {
+            return;
+        }
+        ModifierId id = new ModifierId(MOD_ID, "divine_intervention");
+        ItemStack selected = ItemStack.EMPTY;
+        int level = 0;
+        for (ItemStack stack : player.getHandSlots()) {
+            if (stack.getItem() instanceof IModifiable) {
+                ToolStack tool = ToolStack.from(stack);
+                int candidate = tool.getModifierLevel(id);
+                int candidateUsed = tool.getPersistentData().getInt(new ResourceLocation(MOD_ID, "divine_intervention_uses"));
+                if (candidate > candidateUsed && candidate > level) {
+                    level = candidate;
+                    selected = stack;
+                }
+            }
+        }
+        if (level <= 0 || selected.isEmpty()) {
+            return;
+        }
+        ToolStack tool = ToolStack.from(selected);
+        ResourceLocation key = new ResourceLocation(MOD_ID, "divine_intervention_uses");
+        int used = tool.getPersistentData().getInt(key);
+        if (used >= level) {
+            return;
+        }
+        tool.getPersistentData().putInt(key, used + 1);
+        player.setHealth(Math.max(1.0f, player.getMaxHealth() * 0.25f));
+        player.clearFire();
+        event.setCanceled(true);
     }
 
     private void loadDatapackBackedServices(net.minecraft.server.MinecraftServer server) {

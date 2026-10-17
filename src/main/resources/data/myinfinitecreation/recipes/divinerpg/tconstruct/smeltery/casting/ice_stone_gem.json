@@ -1,0 +1,22 @@
+{
+  "type": "tconstruct:casting_table",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "divinerpg"
+    }
+  ],
+  "fluid": {
+    "fluid": "myinfinitecreation:molten_ice_stone",
+    "amount": 90
+  },
+  "result": "divinerpg:ice_stone",
+  "cooling_time": 85,
+  "cast": {
+    "tag": "tconstruct:casts/multi_use/gem"
+  }
+}

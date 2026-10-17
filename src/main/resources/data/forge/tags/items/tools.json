@@ -1,0 +1,9 @@
+{
+  "values": [
+    "#forge:tools/arlemite",
+    "#forge:tools/bloodgem",
+    "#forge:tools/realmite",
+    "#forge:tools/rupee"
+  ],
+  "replace": false
+}

@@ -1,0 +1,22 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "divinerpg"
+    }
+  ],
+  "ingredient": {
+    "item": "divinerpg:divine_stone"
+  },
+  "result": {
+    "fluid": "myinfinitecreation:molten_divine_stone",
+    "amount": 90
+  },
+  "temperature": 1250,
+  "time": 100
+}

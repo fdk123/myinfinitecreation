@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material",
+  "ingredient": {
+    "item": "divinerpg:torridite_nugget"
+  },
+  "material": "myinfinitecreation:torridite",
+  "needed": 9,
+  "value": 1
+}

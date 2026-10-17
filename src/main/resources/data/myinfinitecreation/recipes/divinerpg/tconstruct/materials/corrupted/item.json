@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material",
+  "ingredient": {
+    "item": "divinerpg:corrupted_stone"
+  },
+  "material": "myinfinitecreation:corrupted",
+  "needed": 1,
+  "value": 1
+}

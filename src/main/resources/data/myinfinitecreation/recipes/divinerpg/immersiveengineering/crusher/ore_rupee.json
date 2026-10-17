@@ -1,0 +1,40 @@
+{
+  "type": "immersiveengineering:crusher",
+  "energy": 6000,
+  "input": {
+    "tag": "forge:ores/blocks/rupee"
+  },
+  "result": {
+    "base_ingredient": {
+      "item": "myinfinitecreation:rupee_dust"
+    },
+    "count": 2
+  },
+  "secondaries": [
+    {
+      "chance": 0.1,
+      "conditions": [
+        {
+          "type": "forge:not",
+          "value": {
+            "type": "forge:tag_empty",
+            "tag": "forge:dusts/arlemite"
+          }
+        }
+      ],
+      "output": {
+        "tag": "forge:dusts/arlemite"
+      }
+    }
+  ],
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "divinerpg"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "immersiveengineering"
+    }
+  ]
+}

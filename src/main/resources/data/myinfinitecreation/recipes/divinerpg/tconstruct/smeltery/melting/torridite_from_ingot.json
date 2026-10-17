@@ -1,0 +1,22 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "divinerpg"
+    }
+  ],
+  "ingredient": {
+    "item": "divinerpg:torridite_ingot"
+  },
+  "result": {
+    "fluid": "myinfinitecreation:molten_torridite",
+    "amount": 90
+  },
+  "temperature": 1000,
+  "time": 75
+}

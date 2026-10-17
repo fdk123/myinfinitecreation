@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material",
+  "ingredient": {
+    "item": "divinerpg:shadow_bar"
+  },
+  "material": "myinfinitecreation:shadow",
+  "needed": 4,
+  "value": 1
+}

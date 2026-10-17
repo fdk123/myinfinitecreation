@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material",
+  "ingredient": {
+    "item": "divinerpg:torridite_block"
+  },
+  "material": "myinfinitecreation:torridite",
+  "needed": 1,
+  "value": 9
+}

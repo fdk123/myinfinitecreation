@@ -1,0 +1,16 @@
+{
+  "level_display": "tconstruct:default",
+  "modules": [
+    {
+      "type": "tconstruct:conditional_melee_damage",
+      "formula": [
+        "$damage",
+        "$level",
+        "*",
+        "$damage",
+        "+"
+      ],
+      "percent": false
+    }
+  ]
+}

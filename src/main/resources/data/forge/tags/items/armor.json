@@ -1,0 +1,9 @@
+{
+  "values": [
+    "#forge:armor/arlemite",
+    "#forge:armor/realmite",
+    "#forge:armor/rupee",
+    "#forge:armor/torridite"
+  ],
+  "replace": false
+}

@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material",
+  "ingredient": {
+    "item": "divinerpg:ice_stone"
+  },
+  "material": "myinfinitecreation:ice",
+  "needed": 1,
+  "value": 1
+}

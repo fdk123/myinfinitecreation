@@ -1,0 +1,26 @@
+{
+  "type": "mekanism:purifying",
+  "itemInput": {
+    "ingredient": {
+      "tag": "forge:ores/blocks/rupee"
+    }
+  },
+  "output": {
+    "count": 3,
+    "item": "myinfinitecreation:clump_rupee"
+  },
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "divinerpg"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ],
+  "gasInput": {
+    "amount": 1,
+    "gas": "mekanism:oxygen"
+  }
+}

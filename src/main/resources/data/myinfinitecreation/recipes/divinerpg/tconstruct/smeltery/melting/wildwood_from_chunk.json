@@ -1,0 +1,22 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "divinerpg"
+    }
+  ],
+  "ingredient": {
+    "item": "divinerpg:wildwood_chunk"
+  },
+  "result": {
+    "fluid": "myinfinitecreation:molten_wildwood_chunk",
+    "amount": 90
+  },
+  "temperature": 1450,
+  "time": 100
+}

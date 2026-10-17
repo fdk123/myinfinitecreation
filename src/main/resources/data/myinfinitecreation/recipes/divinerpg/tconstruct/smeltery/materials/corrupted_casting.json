@@ -1,0 +1,19 @@
+{
+  "type": "tconstruct:material_fluid",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "divinerpg"
+    }
+  ],
+  "fluid": {
+    "fluid": "myinfinitecreation:molten_corrupted_stone",
+    "amount": 90
+  },
+  "output": "myinfinitecreation:corrupted",
+  "temperature": 1000
+}

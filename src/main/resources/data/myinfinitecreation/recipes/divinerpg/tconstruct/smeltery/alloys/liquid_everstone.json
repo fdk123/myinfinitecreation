@@ -1,0 +1,32 @@
+{
+  "type": "tconstruct:alloy",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "divinerpg"
+    }
+  ],
+  "inputs": [
+    {
+      "fluid": "myinfinitecreation:molten_green_everstone",
+      "amount": 500
+    },
+    {
+      "fluid": "myinfinitecreation:molten_white_everstone",
+      "amount": 500
+    },
+    {
+      "fluid": "myinfinitecreation:molten_black_everstone",
+      "amount": 500
+    }
+  ],
+  "result": {
+    "fluid": "myinfinitecreation:molten_liquid_everstone",
+    "amount": 500
+  },
+  "temperature": 1250
+}

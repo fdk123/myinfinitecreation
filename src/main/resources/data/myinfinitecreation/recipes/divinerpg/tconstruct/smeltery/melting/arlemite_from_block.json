@@ -1,0 +1,22 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "divinerpg"
+    }
+  ],
+  "ingredient": {
+    "item": "divinerpg:arlemite_block"
+  },
+  "result": {
+    "fluid": "myinfinitecreation:molten_arlemite",
+    "amount": 810
+  },
+  "temperature": 1000,
+  "time": 200
+}

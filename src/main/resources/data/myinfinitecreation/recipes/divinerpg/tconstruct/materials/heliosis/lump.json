@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material",
+  "ingredient": {
+    "item": "divinerpg:heliosis_lump"
+  },
+  "material": "myinfinitecreation:heliosis",
+  "needed": 4,
+  "value": 1
+}

@@ -1,0 +1,26 @@
+{
+  "type": "immersiveengineering:alloy",
+  "input0": {
+    "item": "divinerpg:arlemite_ingot"
+  },
+  "input1": {
+    "item": "divinerpg:rupee_ingot"
+  },
+  "result": {
+    "base_ingredient": {
+      "item": "divinerpg:shadow_bar"
+    },
+    "count": 1
+  },
+  "time": 200,
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "divinerpg"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "immersiveengineering"
+    }
+  ]
+}

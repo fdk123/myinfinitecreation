@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material",
+  "ingredient": {
+    "item": "divinerpg:green_diamond_chunk"
+  },
+  "material": "myinfinitecreation:green_diamond",
+  "needed": 1,
+  "value": 1
+}

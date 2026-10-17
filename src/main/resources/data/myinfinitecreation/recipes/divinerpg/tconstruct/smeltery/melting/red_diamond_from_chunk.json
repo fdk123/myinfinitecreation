@@ -1,0 +1,22 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "divinerpg"
+    }
+  ],
+  "ingredient": {
+    "item": "divinerpg:red_diamond_chunk"
+  },
+  "result": {
+    "fluid": "myinfinitecreation:molten_red_diamond",
+    "amount": 90
+  },
+  "temperature": 1000,
+  "time": 100
+}

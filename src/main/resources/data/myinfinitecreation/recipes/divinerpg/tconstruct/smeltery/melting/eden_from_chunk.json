@@ -1,0 +1,22 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "divinerpg"
+    }
+  ],
+  "ingredient": {
+    "item": "divinerpg:eden_chunk"
+  },
+  "result": {
+    "fluid": "myinfinitecreation:molten_eden_chunk",
+    "amount": 90
+  },
+  "temperature": 1350,
+  "time": 75
+}

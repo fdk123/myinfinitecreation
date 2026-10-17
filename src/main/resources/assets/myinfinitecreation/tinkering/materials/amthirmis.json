@@ -1,0 +1,28 @@
+{
+  "color": "FF260000",
+  "fallbacks": [
+    "metal"
+  ],
+  "generator": {
+    "supported_stats": [
+      "tconstruct:head",
+      "tconstruct:handle",
+      "tconstruct:binding"
+    ],
+    "transformer": {
+      "type": "tconstruct:recolor_sprite",
+      "color_mapping": {
+        "type": "tconstruct:grey_to_color",
+        "palette": {
+          "000": "FF040000",
+          "063": "FF0A0000",
+          "102": "FF100000",
+          "140": "FF170000",
+          "178": "FF1E0000",
+          "216": "FF260000",
+          "255": "FF2E0000"
+        }
+      }
+    }
+  }
+}

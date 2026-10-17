@@ -1,0 +1,18 @@
+{
+  "level_display": "tconstruct:default",
+  "modules": [
+    {
+      "type": "tconstruct:weapon_mob_effect",
+      "effect": "minecraft:poison",
+      "chance": {
+        "each_level": 0.3
+      },
+      "level": {
+        "flat": 1.0
+      },
+      "time": {
+        "per_level": 60.0
+      }
+    }
+  ]
+}

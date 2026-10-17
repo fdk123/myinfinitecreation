@@ -1,0 +1,26 @@
+{
+  "type": "mekanism:purifying",
+  "itemInput": {
+    "ingredient": {
+      "tag": "forge:raw_materials/arlemite"
+    }
+  },
+  "output": {
+    "count": 2,
+    "item": "myinfinitecreation:clump_arlemite"
+  },
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "divinerpg"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ],
+  "gasInput": {
+    "amount": 1,
+    "gas": "mekanism:oxygen"
+  }
+}

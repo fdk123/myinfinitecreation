@@ -1,0 +1,22 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "divinerpg"
+    }
+  ],
+  "ingredient": {
+    "item": "divinerpg:raw_arcanium"
+  },
+  "result": {
+    "fluid": "myinfinitecreation:molten_arcanium",
+    "amount": 180
+  },
+  "temperature": 2000,
+  "time": 100
+}

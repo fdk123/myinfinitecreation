@@ -1,0 +1,28 @@
+{
+  "type": "tconstruct:alloy",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "divinerpg"
+    }
+  ],
+  "inputs": [
+    {
+      "fluid": "myinfinitecreation:molten_realmite",
+      "amount": 720
+    },
+    {
+      "fluid": "tconstruct:molten_diamond",
+      "amount": 90
+    }
+  ],
+  "result": {
+    "fluid": "myinfinitecreation:molten_yellow_diamond",
+    "amount": 90
+  },
+  "temperature": 1250
+}

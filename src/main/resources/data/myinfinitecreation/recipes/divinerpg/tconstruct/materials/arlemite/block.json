@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material",
+  "ingredient": {
+    "item": "divinerpg:arlemite_block"
+  },
+  "material": "myinfinitecreation:arlemite",
+  "needed": 1,
+  "value": 9
+}

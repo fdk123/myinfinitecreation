@@ -1,0 +1,22 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "divinerpg"
+    }
+  ],
+  "ingredient": {
+    "item": "divinerpg:pure_aquatic_pellets"
+  },
+  "result": {
+    "fluid": "myinfinitecreation:molten_aquatic",
+    "amount": 180
+  },
+  "temperature": 500,
+  "time": 100
+}

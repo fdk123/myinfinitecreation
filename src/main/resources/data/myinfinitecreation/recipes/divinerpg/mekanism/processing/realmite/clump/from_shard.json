@@ -1,0 +1,25 @@
+{
+  "type": "mekanism:purifying",
+  "itemInput": {
+    "ingredient": {
+      "tag": "forge:shards/realmite"
+    }
+  },
+  "output": {
+    "item": "myinfinitecreation:clump_realmite"
+  },
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "divinerpg"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ],
+  "gasInput": {
+    "amount": 1,
+    "gas": "mekanism:oxygen"
+  }
+}

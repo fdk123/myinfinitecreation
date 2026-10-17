@@ -1,0 +1,22 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "divinerpg"
+    }
+  ],
+  "ingredient": {
+    "item": "divinerpg:bloodgem"
+  },
+  "result": {
+    "fluid": "myinfinitecreation:molten_bloodgem",
+    "amount": 90
+  },
+  "temperature": 1000,
+  "time": 100
+}

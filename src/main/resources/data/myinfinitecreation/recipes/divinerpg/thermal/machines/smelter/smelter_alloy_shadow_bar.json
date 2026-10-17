@@ -1,0 +1,44 @@
+{
+  "type": "thermal:smelter",
+  "ingredients": [
+    {
+      "value": [
+        {
+          "tag": "forge:ingots/arlemite"
+        },
+        {
+          "tag": "forge:dusts/arlemite"
+        }
+      ],
+      "count": 1
+    },
+    {
+      "value": [
+        {
+          "tag": "forge:ingots/rupee"
+        },
+        {
+          "tag": "forge:dusts/rupee"
+        }
+      ],
+      "count": 1
+    }
+  ],
+  "result": [
+    {
+      "item": "divinerpg:shadow_bar",
+      "count": 1
+    }
+  ],
+  "energy": 800,
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "divinerpg"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "thermal"
+    }
+  ]
+}

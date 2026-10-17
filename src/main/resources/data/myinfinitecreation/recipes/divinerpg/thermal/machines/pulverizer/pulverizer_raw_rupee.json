@@ -1,0 +1,27 @@
+{
+  "type": "thermal:pulverizer",
+  "ingredient": {
+    "tag": "forge:raw_materials/rupee"
+  },
+  "result": [
+    {
+      "item": "myinfinitecreation:rupee_dust",
+      "chance": 1.25
+    },
+    {
+      "item": "myinfinitecreation:arlemite_dust",
+      "chance": 0.05
+    }
+  ],
+  "experience": 0.1,
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "divinerpg"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "thermal"
+    }
+  ]
+}

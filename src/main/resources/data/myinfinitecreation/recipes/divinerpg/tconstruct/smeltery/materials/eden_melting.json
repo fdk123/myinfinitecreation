@@ -1,0 +1,19 @@
+{
+  "type": "tconstruct:material_melting",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "divinerpg"
+    }
+  ],
+  "input": "myinfinitecreation:eden",
+  "result": {
+    "fluid": "myinfinitecreation:molten_eden_chunk",
+    "amount": 90
+  },
+  "temperature": 1000
+}

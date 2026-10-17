@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "myinfinitecreation:item/divinerpg_molten/molten_green_everstone_bucket"
+  }
+}

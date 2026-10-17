@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material",
+  "ingredient": {
+    "item": "divinerpg:pardimal_lump"
+  },
+  "material": "myinfinitecreation:pardimal",
+  "needed": 4,
+  "value": 1
+}

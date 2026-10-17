@@ -1,0 +1,28 @@
+{
+  "type": "immersiveengineering:crusher",
+  "energy": 6000,
+  "input": {
+    "tag": "forge:raw_materials/rupee"
+  },
+  "result": {
+    "item": "myinfinitecreation:rupee_dust"
+  },
+  "secondaries": [
+    {
+      "chance": 0.33333334,
+      "output": {
+        "item": "myinfinitecreation:rupee_dust"
+      }
+    }
+  ],
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "divinerpg"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "immersiveengineering"
+    }
+  ]
+}

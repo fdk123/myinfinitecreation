@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material",
+  "ingredient": {
+    "item": "divinerpg:bedrock_chunk"
+  },
+  "material": "myinfinitecreation:bedrock",
+  "needed": 1,
+  "value": 1
+}

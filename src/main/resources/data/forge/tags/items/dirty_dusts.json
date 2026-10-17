@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:dirty_dusts/arlemite",
+    "#forge:dirty_dusts/realmite",
+    "#forge:dirty_dusts/rupee",
+    "#forge:dirty_dusts/torridite"
+  ]
+}

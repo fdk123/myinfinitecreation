@@ -1,0 +1,26 @@
+{
+  "type": "mekanism:injecting",
+  "itemInput": {
+    "ingredient": {
+      "tag": "forge:storage_blocks/raw_torridite"
+    }
+  },
+  "output": {
+    "count": 24,
+    "item": "myinfinitecreation:shard_torridite"
+  },
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "divinerpg"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ],
+  "gasInput": {
+    "amount": 2,
+    "gas": "mekanism:hydrogen_chloride"
+  }
+}

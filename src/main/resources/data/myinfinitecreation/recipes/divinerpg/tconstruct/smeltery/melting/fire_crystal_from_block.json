@@ -1,0 +1,22 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "divinerpg"
+    }
+  ],
+  "ingredient": {
+    "item": "divinerpg:fire_crystal"
+  },
+  "result": {
+    "fluid": "myinfinitecreation:molten_fire_crystal",
+    "amount": 50
+  },
+  "temperature": 800,
+  "time": 100
+}

@@ -1,0 +1,22 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "divinerpg"
+    }
+  ],
+  "ingredient": {
+    "item": "divinerpg:bedrock_chunk"
+  },
+  "result": {
+    "fluid": "myinfinitecreation:molten_bedrock_chunk",
+    "amount": 90
+  },
+  "temperature": 1750,
+  "time": 125
+}

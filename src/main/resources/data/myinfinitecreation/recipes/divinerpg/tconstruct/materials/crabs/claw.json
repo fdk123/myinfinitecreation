@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material",
+  "ingredient": {
+    "item": "divinerpg:crab_claw"
+  },
+  "material": "myinfinitecreation:crabs",
+  "needed": 1,
+  "value": 1
+}

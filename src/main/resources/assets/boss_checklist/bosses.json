@@ -1,0 +1,291 @@
+[
+  {
+    "id": "divinerpg:ancient_entity",
+    "drops": [
+      "divinerpg:divine_shards",
+      "divinerpg:sandslash",
+      "divinerpg:ancient_entity_statue"
+    ],
+    "scale": 5,
+    "y_offset": 0,
+    "broken_model": false,
+    "additional_info": false,
+    "position": 200
+  },
+  {
+    "id": "divinerpg:the_watcher",
+    "drops": [
+      "divinerpg:torridite_ingot",
+      "divinerpg:soulfire_stone",
+      "divinerpg:divine_shards",
+      "divinerpg:the_watcher_statue"
+    ],
+    "scale": 10,
+    "y_offset": 0,
+    "broken_model": false,
+    "additional_info": false,
+    "position": 201
+  },
+  {
+    "id": "divinerpg:king_of_scorchers",
+    "drops": [
+      "divinerpg:fury_fire",
+      "divinerpg:soulfire_stone",
+      "divinerpg:king_of_scorchers_statue"
+    ],
+    "scale": 20,
+    "y_offset": 0,
+    "broken_model": false,
+    "additional_info": false,
+    "position": 202
+  },
+  {
+    "id": "divinerpg:ayeraco",
+    "drops": [
+      "divinerpg:ender_sword",
+      "divinerpg:divine_shards",
+      "divinerpg:ayeraco_statue"
+    ],
+    "scale": 25,
+    "y_offset": 0,
+    "broken_model": false,
+    "additional_info": false,
+    "position": 203
+  },
+  {
+    "id": "divinerpg:sunstorm",
+    "drops": [
+      "divinerpg:eden_fragments",
+      "divinerpg:eden_blitz",
+      "divinerpg:teleportation_star",
+      "divinerpg:eden_heart",
+      "divinerpg:sunstorm_statue"
+    ],
+    "scale": 20,
+    "y_offset": 15,
+    "broken_model": false,
+    "additional_info": false,
+    "position": 204
+  },
+  {
+    "id": "divinerpg:termasect",
+    "drops": [
+      "divinerpg:wildwood_fragments",
+      "divinerpg:wildwood_heart",
+      "divinerpg:wildwood_log",
+      "divinerpg:wildwood_blitz",
+      "divinerpg:termasect_statue"
+    ],
+    "scale": 5,
+    "y_offset": 3,
+    "broken_model": false,
+    "additional_info": false,
+    "position": 205
+  },
+  {
+    "id": "divinerpg:experienced_cori",
+    "drops": [
+      "divinerpg:skythern_fragments",
+      "divinerpg:halite_shield",
+      "divinerpg:skythern_heart",
+      "divinerpg:skythern_blitz",
+      "divinerpg:experienced_cori_statue"
+    ],
+    "scale": 10,
+    "y_offset": 15,
+    "broken_model": false,
+    "additional_info": false,
+    "position": 206
+  },
+  {
+    "id": "divinerpg:eternal_archer",
+    "drops": [
+      "divinerpg:halite_bow",
+      "divinerpg:apalachia_heart",
+      "divinerpg:eternal_archer_statue"
+    ],
+    "scale": 15,
+    "y_offset": 15,
+    "broken_model": false,
+    "additional_info": false,
+    "position": 207
+  },
+  {
+    "id": "divinerpg:parasecta",
+    "drops": [
+      "divinerpg:dungeon_tokens",
+      "divinerpg:parasecta_statue"
+    ],
+    "scale": 22,
+    "y_offset": 10,
+    "broken_model": false,
+    "additional_info": false,
+    "position": 208
+  },
+  {
+    "id": "divinerpg:soul_fiend",
+    "drops": [
+      "divinerpg:halite_slicer",
+      "divinerpg:halite_blitz",
+      "divinerpg:mortum_heart",
+      "divinerpg:soul_fiend_statue"
+    ],
+    "scale": 22,
+    "y_offset": 5,
+    "broken_model": false,
+    "additional_info": false,
+    "position": 209
+  },
+  {
+    "id": "divinerpg:twilight_demon",
+    "drops": [
+      "divinerpg:halite_boots",
+      "divinerpg:halite_helmet",
+      "divinerpg:twilight_demon_statue"
+    ],
+    "scale": 15,
+    "y_offset": 5,
+    "broken_model": false,
+    "additional_info": false,
+    "position": 210
+  },
+  {
+    "id": "divinerpg:vamacheron",
+    "drops": [
+      "divinerpg:halite_blade",
+      "divinerpg:mortum_heart",
+      "divinerpg:vamacheron_statue"
+    ],
+    "scale": 15,
+    "y_offset": 5,
+    "broken_model": false,
+    "additional_info": false,
+    "position": 211
+  },
+  {
+    "id": "divinerpg:densos",
+    "drops": [
+      "divinerpg:halite_chestplate",
+      "divinerpg:mortum_heart",
+      "divinerpg:densos_statue"
+    ],
+    "scale": 20,
+    "y_offset": 10,
+    "broken_model": false,
+    "additional_info": false,
+    "position": 212
+  },
+  {
+    "id": "divinerpg:reyvor",
+    "drops": [
+      "divinerpg:halite_leggings",
+      "divinerpg:mortum_heart",
+      "divinerpg:reyvor_statue"
+    ],
+    "scale": 20,
+    "y_offset": 10,
+    "broken_model": false,
+    "additional_info": false,
+    "position": 213
+  },
+  {
+    "id": "divinerpg:dramix",
+    "drops": [
+      "divinerpg:dungeon_tokens",
+      "divinerpg:dramix_statue"
+    ],
+    "scale": 20,
+    "y_offset": 10,
+    "broken_model": false,
+    "additional_info": false,
+    "position": 214
+  },
+  {
+    "id": "divinerpg:karot",
+    "drops": [
+      "divinerpg:halite_shickaxe",
+      "divinerpg:halite_phaser",
+      "divinerpg:mortum_heart",
+      "divinerpg:karot_statue"
+    ],
+    "scale": 12,
+    "y_offset": 5,
+    "broken_model": false,
+    "additional_info": false,
+    "position": 215
+  },
+  {
+    "id": "divinerpg:hive_queen",
+    "drops": [
+      "divinerpg:honeychunk",
+      "divinerpg:honeysuckle",
+      "divinerpg:cermile_lump"
+    ],
+    "scale": 30,
+    "y_offset": 15,
+    "broken_model": false,
+    "additional_info": false,
+    "position": 216
+  },
+  {
+    "id": "divinerpg:quadro",
+    "drops": [
+      "divinerpg:quadrotic_lump"
+    ],
+    "scale": 21,
+    "y_offset": 5,
+    "broken_model": false,
+    "additional_info": false,
+    "position": 217
+  },
+  {
+    "id": "divinerpg:karos",
+    "drops": [
+      "divinerpg:karos_lump",
+      "divinerpg:rock_chunks"
+    ],
+    "scale": 22,
+    "y_offset": 7,
+    "broken_model": false,
+    "additional_info": false,
+    "position": 218
+  },
+  {
+    "id": "divinerpg:raglok",
+    "drops": [
+      "divinerpg:heliosis_lump"
+    ],
+    "scale": 12,
+    "y_offset": 7,
+    "broken_model": false,
+    "additional_info": false,
+    "position": 219
+  },
+  {
+    "id": "divinerpg:wreck",
+    "drops": [
+      "divinerpg:arksiane_lump",
+      "minecraft:potion"
+    ],
+    "scale": 25,
+    "y_offset": 8,
+    "broken_model": false,
+    "additional_info": false,
+    "position": 220
+  },
+  {
+    "id": "divinerpg:lady_luna",
+    "drops": [
+      "divinerpg:everbright",
+      "divinerpg:everfright",
+      "divinerpg:evernight",
+      "divinerpg:everlight",
+      "divinerpg:eversight"
+    ],
+    "scale": 20,
+    "y_offset": 7,
+    "broken_model": false,
+    "additional_info": false,
+    "position": 221
+  }
+]

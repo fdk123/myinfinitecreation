@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material",
+  "ingredient": {
+    "item": "divinerpg:shadow_stone"
+  },
+  "material": "myinfinitecreation:shadow",
+  "needed": 1,
+  "value": 1
+}

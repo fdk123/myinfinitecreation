@@ -1,0 +1,24 @@
+{
+  "type": "immersiveengineering:crusher",
+  "energy": 54000,
+  "input": {
+    "tag": "forge:storage_blocks/raw_torridite"
+  },
+  "result": {
+    "base_ingredient": {
+      "item": "myinfinitecreation:torridite_dust"
+    },
+    "count": 12
+  },
+  "secondaries": [],
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "divinerpg"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "immersiveengineering"
+    }
+  ]
+}

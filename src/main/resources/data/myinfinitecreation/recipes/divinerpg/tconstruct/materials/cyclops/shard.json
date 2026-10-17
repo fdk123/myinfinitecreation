@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material",
+  "ingredient": {
+    "item": "divinerpg:cyclops_eye_shards"
+  },
+  "material": "myinfinitecreation:cyclops",
+  "needed": 9,
+  "value": 1
+}

@@ -1,0 +1,22 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "divinerpg"
+    }
+  ],
+  "ingredient": {
+    "item": "divinerpg:shadow_bar"
+  },
+  "result": {
+    "fluid": "myinfinitecreation:molten_shadow_stone",
+    "amount": 23
+  },
+  "temperature": 1000,
+  "time": 75
+}

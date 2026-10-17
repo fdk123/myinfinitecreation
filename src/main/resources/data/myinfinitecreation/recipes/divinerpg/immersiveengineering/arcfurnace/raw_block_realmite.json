@@ -1,0 +1,35 @@
+{
+  "type": "immersiveengineering:arc_furnace",
+  "additives": [],
+  "energy": 230400,
+  "input": {
+    "tag": "forge:storage_blocks/raw_realmite"
+  },
+  "results": [
+    {
+      "base_ingredient": {
+        "item": "divinerpg:realmite_ingot"
+      },
+      "count": 13
+    }
+  ],
+  "secondaries": [
+    {
+      "chance": 0.5,
+      "output": {
+        "item": "divinerpg:realmite_ingot"
+      }
+    }
+  ],
+  "time": 900,
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "divinerpg"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "immersiveengineering"
+    }
+  ]
+}

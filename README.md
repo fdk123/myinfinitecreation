@@ -2,6 +2,10 @@
 
 Forge 1.20.1 progression addon for the My Infinite Creation modpack.
 
+DivineRPG integrations ported into this addon are described in [DivineRPG compatibility](docs/divinerpg-compat.md). Install the official DivineRPG Compat as well; its integrations are kept there.
+
+The DivineRPG boss list for Boss Checklist is included as resource data. See [Boss Checklist integration](docs/boss-checklist-divinerpg.md) for the required mod versions and the 1.20.1 port details.
+
 The first goal is to move fragile CraftTweaker recipe removals into a small addon-side recipe policy layer. Rules live in datapack JSON under:
 
 `data/<namespace>/recipe_policies/*.json`

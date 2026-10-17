@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material",
+  "ingredient": {
+    "item": "divinerpg:hellstone_ingot"
+  },
+  "material": "myinfinitecreation:hellstone",
+  "needed": 1,
+  "value": 1
+}
