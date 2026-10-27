@@ -47,6 +47,8 @@ public class JeiProgressionPlugin implements IModPlugin {
     private static List<HiddenRecipes> forcedVisibleTypedRecipes = List.of();
     private static Set<ResourceLocation> forcedAddedMineColoniesRecipes = new LinkedHashSet<>();
     private static boolean refreshInProgress = false;
+    private static boolean pendingInitialRefresh = false;
+    private static int lastProcessedCustomRecipeCount = -1;
     private static String hiddenStateKey = "";
 
     @Override
@@ -63,6 +65,7 @@ public class JeiProgressionPlugin implements IModPlugin {
     @Override
     public void onRuntimeAvailable(IJeiRuntime jeiRuntime) {
         runtime = jeiRuntime;
+        pendingInitialRefresh = true;
         refreshRuntime();
     }
 
@@ -76,11 +79,17 @@ public class JeiProgressionPlugin implements IModPlugin {
         forcedVisibleTypedRecipes = List.of();
         forcedAddedMineColoniesRecipes = new LinkedHashSet<>();
         refreshInProgress = false;
+        pendingInitialRefresh = false;
+        lastProcessedCustomRecipeCount = -1;
         hiddenStateKey = "";
     }
 
     public static void refreshRuntime() {
         if (runtime == null || refreshInProgress) {
+            return;
+        }
+        Minecraft minecraft = Minecraft.getInstance();
+        if (minecraft.player == null || minecraft.level == null) {
             return;
         }
 
@@ -99,7 +108,8 @@ public class JeiProgressionPlugin implements IModPlugin {
                     newForcedVisibleTypedRecipes
             );
             if (newHiddenStateKey.equals(hiddenStateKey)) {
-                addForcedVisibleMineColoniesCustomRecipes();
+                addForcedVisibleMineColoniesCustomRecipes(true);
+                pendingInitialRefresh = false;
                 return;
             }
 
@@ -132,7 +142,7 @@ public class JeiProgressionPlugin implements IModPlugin {
                     visibleRecipes.type().getUid()
             );
         }
-        addForcedVisibleMineColoniesCustomRecipes();
+        addForcedVisibleMineColoniesCustomRecipes(true);
 
         if (!newHiddenStacks.isEmpty()) {
             runtime.getIngredientManager().removeIngredientsAtRuntime(VanillaTypes.ITEM_STACK, newHiddenStacks);
@@ -160,13 +170,18 @@ public class JeiProgressionPlugin implements IModPlugin {
         hiddenTypedRecipes = newHiddenTypedRecipes;
         forcedVisibleTypedRecipes = newForcedVisibleTypedRecipes;
         hiddenStateKey = newHiddenStateKey;
+        pendingInitialRefresh = false;
         } finally {
             refreshInProgress = false;
         }
     }
 
     public static void retryForcedVisibleMineColoniesRecipes() {
-        addForcedVisibleMineColoniesCustomRecipes();
+        if (pendingInitialRefresh) {
+            refreshRuntime();
+        } else {
+            addForcedVisibleMineColoniesCustomRecipes(false);
+        }
     }
 
     private static List<ItemStack> lockedStacks() {
@@ -320,7 +335,7 @@ public class JeiProgressionPlugin implements IModPlugin {
     }
 
     @SuppressWarnings({"rawtypes", "unchecked"})
-    private static void addForcedVisibleMineColoniesCustomRecipes() {
+    private static void addForcedVisibleMineColoniesCustomRecipes(boolean force) {
         if (runtime == null) {
             return;
         }
@@ -335,6 +350,14 @@ public class JeiProgressionPlugin implements IModPlugin {
             Object manager = managerClass.getMethod("getInstance").invoke(null);
             Object allRecipes = managerClass.getMethod("getAllRecipes").invoke(manager);
             if (!(allRecipes instanceof Map<?, ?> recipesByCrafter)) {
+                return;
+            }
+            int customRecipeCount = recipesByCrafter.values().stream()
+                    .filter(Map.class::isInstance)
+                    .map(Map.class::cast)
+                    .mapToInt(Map::size)
+                    .sum();
+            if (!force && customRecipeCount == lastProcessedCustomRecipeCount) {
                 return;
             }
 
@@ -392,6 +415,7 @@ public class JeiProgressionPlugin implements IModPlugin {
             if (added == 0) {
                 MyInfiniteCreation.LOGGER.debug("No forced-visible MineColonies custom recipes matched current JEI progression rules");
             }
+            lastProcessedCustomRecipeCount = customRecipeCount;
         } catch (ReflectiveOperationException exception) {
             MyInfiniteCreation.LOGGER.warn("Could not add forced-visible MineColonies custom recipes to JEI", exception);
         }

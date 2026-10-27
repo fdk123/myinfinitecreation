@@ -1,0 +1,8 @@
+{
+  "sources": [
+    {
+      "type": "minecraft:single",
+      "resource": "twilight_forest_final_boss:entity/castle_keeper/castle_keeper"
+    }
+  ]
+}

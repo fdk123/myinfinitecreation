@@ -21,6 +21,7 @@ public class MicMixinPlugin implements IMixinConfigPlugin {
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
         if (mixinClassName.endsWith("CreateRecipeGridHandlerMixin")
+                || mixinClassName.endsWith("CastleKeeperInvulnerabilityMixin")
                 || mixinClassName.endsWith("TConstructCraftingStationMenuMixin")
                 || mixinClassName.endsWith("MineColoniesJeiJobCategoryMixin")) {
             return classExists(targetClassName);

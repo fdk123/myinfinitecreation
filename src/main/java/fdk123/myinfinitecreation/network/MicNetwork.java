@@ -52,6 +52,10 @@ public class MicNetwork {
                 ModGatesSyncPacket::decode,
                 ModGatesSyncPacket::handle
         );
+        CHANNEL.registerMessage(nextPacketId++, ScaledCloakClimbPacket.class,
+                ScaledCloakClimbPacket::encode, ScaledCloakClimbPacket::decode, ScaledCloakClimbPacket::handle);
+        CHANNEL.registerMessage(nextPacketId++, LichTwilightBoltPacket.class,
+                LichTwilightBoltPacket::encode, LichTwilightBoltPacket::decode, LichTwilightBoltPacket::handle);
     }
 
     public static void syncStage(ServerPlayer player) {
@@ -77,5 +81,13 @@ public class MicNetwork {
                 PacketDistributor.PLAYER.with(() -> player),
                 new MineColoniesResearchSyncPacket(MINECOLONIES_RESEARCH.completedResearches(player))
         );
+    }
+
+    public static void sendScaledCloakClimb(boolean touchingWall) {
+        CHANNEL.sendToServer(new ScaledCloakClimbPacket(touchingWall));
+    }
+
+    public static void sendLichTwilightBolt() {
+        CHANNEL.sendToServer(new LichTwilightBoltPacket());
     }
 }

@@ -6,10 +6,17 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "myinfinitecreation.refmap.json",
   "mixins": [
+    "CastleKeeperInvulnerabilityMixin",
+    "CharmBackpackConsumeMixin",
+    "ChunkGeneratorStructureMixin",
     "CreateRecipeGridHandlerMixin",
     "MineColoniesJeiJobCategoryMixin",
     "ResultSlotMixin",
+    "SteelCapeChainBlockMixin",
     "TConstructCraftingStationMenuMixin"
+  ],
+  "client": [
+    "InvisibilityCloakArmorMixin"
   ],
   "injectors": {
     "defaultRequire": 1
